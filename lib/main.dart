@@ -69,21 +69,37 @@ class _LogInState extends State<LogIn> {
                     child: Container(
                       padding: EdgeInsets.all(40.0),
                       child: Column(
-                        children: const [
-                          TextField(
+                        children: [
+                          const TextField(
                             decoration: InputDecoration(
                               labelText: 'Enter "dice"'
                             ),
                             keyboardType: TextInputType.emailAddress,
                           ),
 
-                          TextField(
+                          const TextField(
                             decoration: InputDecoration(
                                 labelText: 'Enter Password'
                             ),
                             keyboardType: TextInputType.text,
                             obscureText: true,
-                          )
+                          ),
+
+                          const SizedBox(height: 40.0,),
+
+                          ButtonTheme(
+                            minWidth: 100.0,
+                              height: 50.0,
+                              child: ElevatedButton(
+                                  onPressed: (){
+                                  },
+                                  child: const Icon(
+                                  Icons.arrow_forward,
+                                    color: Colors.white,
+                                    size: 35.0,
+                                  )
+                              ),
+                          ),
                         ],
                       ),
                     )
