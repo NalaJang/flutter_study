@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'dice.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -105,11 +107,13 @@ class _LogInState extends State<LogIn> {
 
                                       if( id_controller.text == 'dice'
                                           && pw_controller.text == '1234' ) {
-                                        // Navigator.push(
-                                        //     context,
-                                        //     MaterialPageRoute(
-                                        //         // builder: (BuildContext context) => Dice()
-                                        // );
+
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (BuildContext context) => Dice()
+                                        ));
+
                                       } else if( id_controller.text == 'dice'
                                           && pw_controller.text != '1234' ) {
 
