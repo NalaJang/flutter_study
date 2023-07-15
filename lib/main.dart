@@ -113,11 +113,16 @@ class _LogInState extends State<LogIn> {
                                       } else if( id_controller.text == 'dice'
                                           && pw_controller.text != '1234' ) {
 
+                                        showSnackBarPwError(context);
+
                                       } else if( id_controller.text != 'dice'
                                           && pw_controller.text == '1234' ) {
 
+                                        showSnackBarIdError(context);
+
                                       } else {
 
+                                        showSnackBarLoginError(context);
                                       }
 
                                     },
@@ -140,4 +145,40 @@ class _LogInState extends State<LogIn> {
       ),
     );
   }
+}
+
+void showSnackBarLoginError(BuildContext context) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(content:
+      Text('로그인 정보를 다시 확인하세요',
+        textAlign: TextAlign.center,
+      ),
+      duration: Duration(seconds: 2),
+      backgroundColor: Colors.blue,
+    )
+  );
+}
+
+void showSnackBarIdError(BuildContext context) {
+  ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content:
+      Text('dice의 철자를 확인하세요',
+        textAlign: TextAlign.center,
+      ),
+        duration: Duration(seconds: 2),
+        backgroundColor: Colors.blue,
+      )
+  );
+}
+
+void showSnackBarPwError(BuildContext context) {
+  ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content:
+      Text('비밀번호가 일치하지 않습니다.',
+        textAlign: TextAlign.center,
+      ),
+        duration: Duration(seconds: 2),
+        backgroundColor: Colors.blue,
+      )
+  );
 }
