@@ -29,7 +29,7 @@ class _LogInState extends State<LogIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Log in'),
+        title: const Text('Log in'),
         backgroundColor: Colors.redAccent,
         centerTitle: true,
         leading: IconButton(
@@ -39,10 +39,58 @@ class _LogInState extends State<LogIn> {
 
         actions: [
           IconButton(
+              icon: Icon(Icons.search),
               onPressed: (){},
-              icon: Icon(Icons.search)
           )
         ],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(padding: EdgeInsets.only(top:50)),
+            const Center(
+              child: Image(
+                image: AssetImage('image/chef.gif'),
+                width: 170.0,
+                height: 190.0,
+              ),
+            ),
+            Form(
+                child: Theme(
+                    data: ThemeData(
+                      primaryColor: Colors.teal,
+                      inputDecorationTheme: const InputDecorationTheme(
+                        labelStyle: TextStyle(
+                          color: Colors.teal,
+                          fontSize: 15.0
+                        )
+                      )
+                    ),
+                    child: Container(
+                      padding: EdgeInsets.all(40.0),
+                      child: Column(
+                        children: const [
+                          TextField(
+                            decoration: InputDecoration(
+                              labelText: 'Enter "dice"'
+                            ),
+                            keyboardType: TextInputType.emailAddress,
+                          ),
+
+                          TextField(
+                            decoration: InputDecoration(
+                                labelText: 'Enter Password'
+                            ),
+                            keyboardType: TextInputType.text,
+                            obscureText: true,
+                          )
+                        ],
+                      ),
+                    )
+                )
+            )
+          ],
+        ),
       ),
     );
   }
