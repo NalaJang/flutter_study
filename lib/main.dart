@@ -25,6 +25,10 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
+
+  TextEditingController id_controller = TextEditingController();
+  TextEditingController pw_controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,14 +74,16 @@ class _LogInState extends State<LogIn> {
                       padding: EdgeInsets.all(40.0),
                       child: Column(
                         children: [
-                          const TextField(
+                          TextField(
+                            controller: id_controller,
                             decoration: InputDecoration(
                               labelText: 'Enter "dice"'
                             ),
                             keyboardType: TextInputType.emailAddress,
                           ),
 
-                          const TextField(
+                          TextField(
+                            controller: pw_controller,
                             decoration: InputDecoration(
                                 labelText: 'Enter Password'
                             ),
@@ -92,6 +98,24 @@ class _LogInState extends State<LogIn> {
                               height: 50.0,
                               child: ElevatedButton(
                                   onPressed: (){
+
+                                    if( id_controller.text == 'dice'
+                                    && pw_controller.text == '1234' ) {
+                                      // Navigator.push(
+                                      //     context,
+                                      //     MaterialPageRoute(
+                                      //         // builder: (BuildContext context) => Dice()
+                                      // );
+                                    } else if( id_controller.text == 'dice'
+                                    && pw_controller.text != '1234' ) {
+
+                                    } else if( id_controller.text != 'dice'
+                                        && pw_controller.text == '1234' ) {
+
+                                    } else {
+
+                                    }
+
                                   },
                                   child: const Icon(
                                   Icons.arrow_forward,
