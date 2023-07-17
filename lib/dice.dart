@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() => runApp(Dice());
 
@@ -57,7 +58,13 @@ class _DiceState extends State<Dice> {
               height: 60.0,
 
               child: ElevatedButton(
-                onPressed: (){},
+                onPressed: (){
+                  setState(() {
+                    leftDice = Random().nextInt(6) + 1;
+                    rightDice = Random().nextInt(6) + 1;
+                  });
+                },
+
                 child: Icon(
                   Icons.play_arrow,
                   color: Colors.white,
