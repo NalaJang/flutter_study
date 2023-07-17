@@ -49,7 +49,11 @@ class Dice extends StatelessWidget {
 
               child: ElevatedButton(
                 onPressed: (){},
-                child: null,
+                child: Icon(
+                  Icons.play_arrow,
+                  color: Colors.white,
+                  size: 50.0,
+                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.orangeAccent
                 ),
