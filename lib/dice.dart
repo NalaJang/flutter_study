@@ -11,6 +11,10 @@ class Dice extends StatefulWidget {
 }
 
 class _DiceState extends State<Dice> {
+
+  int leftDice = 1;
+  int rightDice = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,14 +35,14 @@ class _DiceState extends State<Dice> {
               child: Row(
                 children: [
                   Expanded(
-                      child: Image.asset('image/dice1.png')
+                      child: Image.asset('image/dice$leftDice.png')
                   ),
                   SizedBox(
                     width: 20.0,
                   ),
 
                   Expanded(
-                      child: Image.asset('image/dice2.png')
+                      child: Image.asset('image/dice$rightDice.png')
                   )
                 ],
               ),
