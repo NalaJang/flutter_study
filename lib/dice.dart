@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(Dice());
 
@@ -63,6 +64,10 @@ class _DiceState extends State<Dice> {
                     leftDice = Random().nextInt(6) + 1;
                     rightDice = Random().nextInt(6) + 1;
                   });
+
+                  showToast(
+                    "Left dice: {$leftDice}, Right dice: {$rightDice}"
+                  );
                 },
 
                 child: Icon(
@@ -80,4 +85,13 @@ class _DiceState extends State<Dice> {
       ),
     );
   }
+}
+
+void showToast(String message) {
+  Fluttertoast.showToast(
+      msg: message,
+      backgroundColor: Colors.white,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM
+  );
 }
