@@ -38,6 +38,23 @@ class Dice extends StatelessWidget {
                 ],
               ),
             ),
+
+            SizedBox(
+              height: 60.0,
+            ),
+
+            ButtonTheme(
+              minWidth: 100.0,
+              height: 60.0,
+
+              child: ElevatedButton(
+                onPressed: (){},
+                child: null,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.orangeAccent
+                ),
+              ),
+            ),
           ],
         ),
       ),
