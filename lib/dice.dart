@@ -17,17 +17,26 @@ class Dice extends StatelessWidget {
 
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
 
-            Row(
-              children: [
-                Expanded(
-                    child: Image.asset('image/dice1.png')
-                ),
-                Expanded(
-                    child: Image.asset('image/dice2.png')
-                )
-              ],
+            Padding(
+              padding: EdgeInsets.all(32.0),
+
+              child: Row(
+                children: [
+                  Expanded(
+                      child: Image.asset('image/dice1.png')
+                  ),
+                  SizedBox(
+                    width: 20.0,
+                  ),
+
+                  Expanded(
+                      child: Image.asset('image/dice2.png')
+                  )
+                ],
+              ),
             ),
           ],
         ),
