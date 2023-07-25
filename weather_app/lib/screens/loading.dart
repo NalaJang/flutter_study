@@ -17,12 +17,19 @@ class _LoadingState extends State<Loading> {
     // 버튼 클릭 없이 앱이 실행될 때 바로 사용자의 위치를 찾기 위함.
     getLocation();
   }
+
   void getLocation() async {
 
     LocationPermission permission = await Geolocator.requestPermission();
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high); // LocationAccuracy: 위치의 정확도
-    print('position: $position');
+
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high); // LocationAccuracy: 위치의 정확도
+      print('position: $position');
+
+    } catch(e) {
+      print('There was a problem with the Internet connection.');
+    }
   }
 
   @override
