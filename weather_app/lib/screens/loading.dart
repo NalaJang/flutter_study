@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http; // -> http package 에서 나온 메소드라는 것을 쉽게 알게 하기 위함.
+import 'dart:convert'; // json parsing 을 위한 import
 
 class Loading extends StatefulWidget {
   const Loading({Key? key}) : super(key: key);
@@ -43,7 +44,18 @@ class _LoadingState extends State<Loading> {
     // 그래서 await 키워드를 넣어주고 와 fetchData()를 async 방식으로 해주어야 한다.
     http.Response response = await http.get(uri);
     // -> http package 에서 나온 메소드라는 것을 쉽게 알게 하기 위함.
-    print(response.body);
+
+    if( response.statusCode == 200 ) {
+      String jsonData = response.body;
+      // json data parsing
+      var myJson = jsonDecode(jsonData)['wind']['speed'];
+      // json data 출력
+      print(myJson);
+
+    } else {
+      print(response.statusCode);
+    }
+    // print(response.body);
   }
 
   @override
