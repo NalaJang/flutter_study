@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/data/my_location.dart';
 import 'package:weather_app/data/network.dart';
+import 'package:weather_app/screens/weather_screen.dart';
 const apiKey = '86ef50e7e4cc961722fd402718d24d01';
 
 class Loading extends StatefulWidget {
@@ -47,6 +48,10 @@ class _LoadingState extends State<Loading> {
     // getJsonData() 가 Future<dynamic> 타입으로 데이터를 전달해주고 있으므로 await 를 붙여준다.
     var weather = await network.getJsonData();
     print('weather: $weather');
+    
+    Navigator.push(context, MaterialPageRoute(builder: (context){
+      return WeatherScreenState();
+    }));
   }
 
   @override
