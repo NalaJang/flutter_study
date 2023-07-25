@@ -12,12 +12,20 @@ class WeatherScreenState extends StatefulWidget {
 
 class _WeatherScreenStateState extends State<WeatherScreenState> {
 
+  String? cityName;
+  double? temp;
+
   @override
   void initState() {
     super.initState();
 
-    print(widget.parseWeatherData);
+    updateData(widget.parseWeatherData);
 
+  }
+
+  void updateData(dynamic weatherData) {
+    cityName = weatherData['name'];
+    temp = weatherData['main']['temp'];
   }
 
   @override
@@ -29,7 +37,7 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'City name',
+                '$cityName',
                 style: TextStyle(
                   fontSize: 30.0
                 ),
@@ -40,7 +48,7 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
               ),
 
               Text(
-                'Temperature',
+                '$temp',
                 style:TextStyle(
                   fontSize: 30.0
                 ),
