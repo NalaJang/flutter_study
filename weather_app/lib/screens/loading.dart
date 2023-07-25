@@ -42,7 +42,7 @@ class _LoadingState extends State<Loading> {
     // 따라서 weather data 를 모두 가져올 때까지 기다려야 함을 뜻한다.
     // 그래서 await 키워드를 넣어주고 와 fetchData()를 async 방식으로 해주어야 한다.
     Response response = await get(uri);
-    print('response: $response');
+    print(response.body);
   }
 
   @override
