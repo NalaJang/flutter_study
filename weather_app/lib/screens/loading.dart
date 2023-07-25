@@ -9,12 +9,23 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
+
+  void getLocation() async {
+
+    LocationPermission permission = await Geolocator.requestPermission();
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high); // LocationAccuracy: 위치의 정확도
+    print('position: $position');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: ElevatedButton(
-          onPressed: (){},
+          onPressed: (){
+            getLocation();
+          },
           child: Text('Get my location'),
         ),
       ),
