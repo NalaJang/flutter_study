@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/data/my_location.dart';
-import 'package:http/http.dart' as http; // -> http package 에서 나온 메소드라는 것을 쉽게 알게 하기 위함.
-import 'dart:convert'; // json parsing 을 위한 import
+import 'package:weather_app/data/network.dart';
 
 class Loading extends StatefulWidget {
   const Loading({Key? key}) : super(key: key);
@@ -22,8 +21,6 @@ class _LoadingState extends State<Loading> {
     super.initState();
     // 버튼 클릭 없이 앱이 실행될 때 바로 사용자의 위치를 찾기 위함.
     getLocation();
-
-    fetchData();
   }
 
   // getMyCurrentLocation() 내의 position 변수에 값이 할당될 때까지 기다리기 위해
@@ -38,28 +35,14 @@ class _LoadingState extends State<Loading> {
     getLongitude = myLocation.myLongitude;
     print('getLatitude: $getLatitude');
     print('getLongitude: $getLongitude');
-  }
 
-  // dummy data 를 통해 날씨 정보 가져오기
-  void fetchData() async {
-    var uri = Uri.parse('https://samples.openweathermap.org/data/2.5/weather?q=London&appid=b1b15e88fa797225412429c1c50c122a1');
-    // get() 은 Future 메소드이기 때문에 async 방식으로 작동해야 한다.
-    // 따라서 weather data 를 모두 가져올 때까지 기다려야 함을 뜻한다.
-    // 그래서 await 키워드를 넣어주고 와 fetchData()를 async 방식으로 해주어야 한다.
-    http.Response response = await http.get(uri);
-    // -> http package 에서 나온 메소드라는 것을 쉽게 알게 하기 위함.
+    // dummy data 를 통해 날씨 정보 가져오기
+    String uri = 'https://samples.openweathermap.org/data/2.5/weather?q=London&appid=b1b15e88fa797225412429c1c50c122a1';
+    Network network = Network(uri);
 
-    if( response.statusCode == 200 ) {
-      String jsonData = response.body;
-      // json data parsing
-      var myJson = jsonDecode(jsonData)['wind']['speed'];
-      // json data 출력
-      print(myJson);
-
-    } else {
-      print(response.statusCode);
-    }
-    // print(response.body);
+    // getJsonData() 가 Future<dynamic> 타입으로 데이터를 전달해주고 있으므로 await 를 붙여준다.
+    var weather = await network.getJsonData();
+    print('weather: $weather');
   }
 
   @override
