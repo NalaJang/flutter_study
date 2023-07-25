@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/data/my_location.dart';
 import 'package:weather_app/data/network.dart';
+const apiKey = '86ef50e7e4cc961722fd402718d24d01';
 
 class Loading extends StatefulWidget {
   const Loading({Key? key}) : super(key: key);
@@ -37,7 +38,10 @@ class _LoadingState extends State<Loading> {
     print('getLongitude: $getLongitude');
 
     // dummy data 를 통해 날씨 정보 가져오기
-    String uri = 'https://samples.openweathermap.org/data/2.5/weather?q=London&appid=b1b15e88fa797225412429c1c50c122a1';
+    // String uri = 'https://samples.openweathermap.org/data/2.5/weather?q=London&appid=b1b15e88fa797225412429c1c50c122a1';
+    // 'open weather' 사이트에서 받은 apiKey 로 날씨 정보 가져오기
+    String uri = 'https://api.openweathermap.org/data/2.5/weather?'
+        'lat=$getLatitude&lon=$getLongitude&appid=$apiKey';
     Network network = Network(uri);
 
     // getJsonData() 가 Future<dynamic> 타입으로 데이터를 전달해주고 있으므로 await 를 붙여준다.
