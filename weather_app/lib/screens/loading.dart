@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:weather_app/data/my_location.dart';
 import 'package:http/http.dart' as http; // -> http package 에서 나온 메소드라는 것을 쉽게 알게 하기 위함.
 import 'dart:convert'; // json parsing 을 위한 import
 
@@ -12,6 +12,10 @@ class Loading extends StatefulWidget {
 
 class _LoadingState extends State<Loading> {
 
+  // 위도와 경도
+  double? getLatitude;
+  double? getLongitude;
+
   // initState: 'loading' 이라는 statefulWidget 이 생성될 때 딱 한 번 호출됨.
   @override
   void initState() {
@@ -22,18 +26,18 @@ class _LoadingState extends State<Loading> {
     fetchData();
   }
 
+  // getMyCurrentLocation() 내의 position 변수에 값이 할당될 때까지 기다리기 위해
+  // 여기도 async 방식으로 작동하게 한다.
   void getLocation() async {
+    MyLocation myLocation = MyLocation();
+    // await 는 future 의 값을 return 받아야 하므로
+    // 'getMyCurrentLocation()'를 void -> Future<void>로 바꾸어 줌.
+    await myLocation.getMyCurrentLocation();
 
-    LocationPermission permission = await Geolocator.requestPermission();
-
-    try {
-      Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high); // LocationAccuracy: 위치의 정확도
-      print('position: $position');
-
-    } catch(e) {
-      print('There was a problem with the Internet connection.');
-    }
+    getLatitude = myLocation.myLatitude;
+    getLongitude = myLocation.myLongitude;
+    print('getLatitude: $getLatitude');
+    print('getLongitude: $getLongitude');
   }
 
   // dummy data 를 통해 날씨 정보 가져오기
