@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http; // -> http package 에서 나온 메소드라는 것을 쉽게 알게 하기 위함.
 
 class Loading extends StatefulWidget {
   const Loading({Key? key}) : super(key: key);
@@ -41,7 +41,8 @@ class _LoadingState extends State<Loading> {
     // get() 은 Future 메소드이기 때문에 async 방식으로 작동해야 한다.
     // 따라서 weather data 를 모두 가져올 때까지 기다려야 함을 뜻한다.
     // 그래서 await 키워드를 넣어주고 와 fetchData()를 async 방식으로 해주어야 한다.
-    Response response = await get(uri);
+    http.Response response = await http.get(uri);
+    // -> http package 에서 나온 메소드라는 것을 쉽게 알게 하기 위함.
     print(response.body);
   }
 
