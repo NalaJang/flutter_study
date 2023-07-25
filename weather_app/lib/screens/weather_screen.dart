@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 
 class WeatherScreenState extends StatefulWidget {
-  const WeatherScreenState({this.parseWeatherData}) : super(key: parseWeatherData);
+  const WeatherScreenState({super.key, this.parseWeatherData});
 
   // 다양한 타입의 날씨 데이터를 전달 받기 때문에 타입을 dynamic 또는 따로 적지 않는다.
-  final parseWeatherData;
+  final dynamic parseWeatherData;
 
   @override
   State<WeatherScreenState> createState() => _WeatherScreenStateState();
 }
 
 class _WeatherScreenStateState extends State<WeatherScreenState> {
+
+  @override
+  void initState() {
+    super.initState();
+
+    print(widget.parseWeatherData);
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
