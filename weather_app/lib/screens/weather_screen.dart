@@ -13,7 +13,7 @@ class WeatherScreenState extends StatefulWidget {
 class _WeatherScreenStateState extends State<WeatherScreenState> {
 
   String? cityName;
-  double? temp;
+  int? temp;
 
   @override
   void initState() {
@@ -25,7 +25,8 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
 
   void updateData(dynamic weatherData) {
     cityName = weatherData['name'];
-    temp = weatherData['main']['temp'];
+    double doubleTemp = weatherData['main']['temp'];
+    temp = doubleTemp.toInt();
   }
 
   @override
