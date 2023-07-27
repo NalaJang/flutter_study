@@ -139,6 +139,7 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
 
                         // 날씨 정보를 위한 column
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               '18\u2103',
@@ -148,6 +149,21 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
                                   color: Colors.white
                               ),
                             ),
+                            Row(
+                              children: [
+                                SvgPicture.asset('svg/climacon-sun.svg'),
+                                SizedBox(
+                                  width: 10.0,
+                                ),
+                                Text(
+                                  'clear sky',
+                                  style: GoogleFonts.lato(
+                                    fontSize: 16.0,
+                                    color: Colors.white
+                                  ),
+                                )
+                              ],
+                            )
                           ],
                         )
                       ],
