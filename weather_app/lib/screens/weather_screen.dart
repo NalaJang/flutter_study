@@ -34,30 +34,34 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                '$cityName',
-                style: TextStyle(
-                  fontSize: 30.0
-                ),
-              ),
+      appBar: AppBar(
+        title: Text(''),
+        // 좌측 아이콘일 때는 leading 속성 사용
+        leading: IconButton(
+          icon: Icon(Icons.near_me),
+          onPressed: (){},
+          iconSize: 30.0,
+        ),
 
-              SizedBox(
-                height: 20.0,
-              ),
-
-              Text(
-                '$temp',
-                style:TextStyle(
-                  fontSize: 30.0
-                ),
-              )
-            ],
+        // 우측 아이콘일 때는 actions 사용
+        actions: [
+          IconButton(
+            onPressed: (){},
+            icon: Icon(Icons.location_searching),
+            iconSize: 30.0,
           ),
+
+        ],
+      ),
+
+      body: Container(
+        child: Stack(
+          children: [
+            Image.asset('image/background.jpg',
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,)
+          ],
         ),
       ),
     );
