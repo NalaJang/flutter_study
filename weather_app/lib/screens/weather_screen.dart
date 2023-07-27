@@ -21,6 +21,7 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
   String? cityName;
   int? temp;
   Widget? icon;
+  String? des;
   var date = DateTime.now();
 
   @override
@@ -32,11 +33,13 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
   }
 
   void updateData(dynamic weatherData) {
-    cityName = weatherData['name'];
     double doubleTemp = weatherData['main']['temp'];
-    temp = doubleTemp.toInt();
     int condition = weatherData['weather'][0]['id'];
+
+    cityName = weatherData['name'];
+    temp = doubleTemp.toInt();
     icon = model.getWeatherIcon(condition);
+    des = weatherData['weather'][0]['description'];
   }
 
   String getSystemTime() {
@@ -161,7 +164,7 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
                                   width: 10.0,
                                 ),
                                 Text(
-                                  'clear sky',
+                                  '$des',
                                   style: GoogleFonts.lato(
                                     fontSize: 16.0,
                                     color: Colors.white
