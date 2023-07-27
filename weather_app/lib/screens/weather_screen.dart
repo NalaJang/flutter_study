@@ -141,10 +141,10 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
                         Column(
                           children: [
                             Text(
-                              'Seoul',
+                              '18\u2103',
                               style: GoogleFonts.lato(
-                                  fontSize: 35.0,
-                                  fontWeight: FontWeight.bold,
+                                  fontSize: 85.0,
+                                  fontWeight: FontWeight.w300,
                                   color: Colors.white
                               ),
                             ),
