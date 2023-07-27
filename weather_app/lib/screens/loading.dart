@@ -56,7 +56,10 @@ class _LoadingState extends State<Loading> {
     print('airPollutionData: $airPollutionData');
 
     Navigator.push(context, MaterialPageRoute(builder: (context){
-      return WeatherScreenState(parseWeatherData: weatherData,);
+      return WeatherScreenState(
+          parseWeatherData: weatherData,
+          parseAirPollutionData: airPollutionData
+      );
     }));
   }
 
