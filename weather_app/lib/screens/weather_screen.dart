@@ -62,7 +62,25 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
             Image.asset('image/background.jpg',
             fit: BoxFit.cover,
             width: double.infinity,
-            height: double.infinity,)
+            height: double.infinity,
+            ),
+
+            Container(
+              padding: EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 150.0,
+                  ),
+                  Text('Seoul',
+                  style: GoogleFonts.lato(
+                    fontSize: 35.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white
+                  ),)
+                ],
+              ),
+            )
           ],
         ),
       ),
