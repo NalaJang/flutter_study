@@ -41,9 +41,9 @@ class _LoadingState extends State<Loading> {
     // dummy data 를 통해 날씨 정보 가져오기
     // String uri = 'https://samples.openweathermap.org/data/2.5/weather?q=London&appid=b1b15e88fa797225412429c1c50c122a1';
     // 'open weather' 사이트에서 받은 apiKey 로 날씨 정보 가져오기
-    String uri = 'https://api.openweathermap.org/data/2.5/weather?'
+    String weatherUri = 'https://api.openweathermap.org/data/2.5/weather?'
         'lat=$getLatitude&lon=$getLongitude&appid=$apiKey&units=metric';
-    Network network = Network(uri);
+    Network network = Network(weatherUri);
 
     // getJsonData() 가 Future<dynamic> 타입으로 데이터를 전달해주고 있으므로 await 를 붙여준다.
     var weatherData = await network.getJsonData();
