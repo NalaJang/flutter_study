@@ -181,6 +181,8 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
 
                       Row(
                         children: [
+
+                          // 대기 지수
                           Column(
                             children: [
                               Text(
@@ -210,11 +212,77 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
                                 ),
                               )
                             ],
+                          ),
+
+                          // 미세 먼지
+                          Column(
+                            children: [
+                              Text(
+                                'AQI(대기질지수)',
+                                style: GoogleFonts.lato(
+                                    fontSize: 14.0,
+                                    color: Colors.white
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10.0,
+                              ),
+                              Image.asset(
+                                'image/bad.png',
+                                width: 37.0,
+                                height: 35.0,
+                              ),
+                              SizedBox(
+                                height: 10.0,
+                              ),
+                              Text(
+                                '"매우 나쁨"',
+                                style: GoogleFonts.lato(
+                                    fontSize: 14.0,
+                                    color: Colors.black87,
+                                    fontWeight: FontWeight.bold
+                                ),
+                              )
+                            ],
+                          ),
+
+                          // 초미세먼지
+                          Column(
+                            children: [
+                              Text(
+                                'AQI(대기질지수)',
+                                style: GoogleFonts.lato(
+                                    fontSize: 14.0,
+                                    color: Colors.white
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10.0,
+                              ),
+                              Image.asset(
+                                'image/bad.png',
+                                width: 37.0,
+                                height: 35.0,
+                              ),
+                              SizedBox(
+                                height: 10.0,
+                              ),
+                              Text(
+                                '"매우 나쁨"',
+                                style: GoogleFonts.lato(
+                                    fontSize: 14.0,
+                                    color: Colors.black87,
+                                    fontWeight: FontWeight.bold
+                                ),
+                              )
+                            ],
                           )
                         ],
                       )
                     ],
-                  )
+                  ),
+
+
                 ],
               ),
             )
