@@ -19,21 +19,27 @@ class WeatherScreenState extends StatefulWidget {
 class _WeatherScreenStateState extends State<WeatherScreenState> {
 
   Model model = Model();
+  var date = DateTime.now();
+
   String? cityName;
+
+  // 날씨 정보
   int? temp;
   Widget? icon;
   String? des;
-  var date = DateTime.now();
+
+  // 대기 지수
+  int? aqi;
 
   @override
   void initState() {
     super.initState();
 
-    updateData(widget.parseWeatherData);
+    updateData(widget.parseWeatherData, widget.parseAirPollutionData);
 
   }
 
-  void updateData(dynamic weatherData) {
+  void updateData(dynamic weatherData, dynamic airPollutionData) {
     double doubleTemp = weatherData['main']['temp'];
     int condition = weatherData['weather'][0]['id'];
 
@@ -41,6 +47,9 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
     temp = doubleTemp.toInt();
     icon = model.getWeatherIcon(condition);
     des = weatherData['weather'][0]['description'];
+
+    aqi = airPollutionData['list'][0]['main']['aqi'];
+    print('aqi: $aqi');
   }
 
   String getSystemTime() {
