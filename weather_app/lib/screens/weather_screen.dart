@@ -18,6 +18,7 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
 
   String? cityName;
   int? temp;
+  var date = DateTime.now();
 
   @override
   void initState() {
@@ -103,6 +104,13 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
                               ),
                             );
                           },
+                      ),
+                      Text(
+                        DateFormat(' - EEEE').format(date),
+                        style: GoogleFonts.lato(
+                            fontSize: 16.0,
+                            color: Colors.white
+                        ),
                       ),
                     ],
                   )
