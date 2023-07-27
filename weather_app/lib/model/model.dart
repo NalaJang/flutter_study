@@ -7,7 +7,7 @@ class Model {
   Widget? getWeatherIcon(int condition) {
     if( condition < 300 ) {
       return SvgPicture.asset(
-        'svg/climacon-cloud_lightning.svg',
+        'svg/climacon-colud_lightning.svg',
         color: Colors.black87,
       );
 
@@ -25,7 +25,7 @@ class Model {
 
     } else if( condition <= 804 ) {
       return SvgPicture.asset(
-        'svg/climacon-cloudsun.svg',
+        'svg/climacon-cloud_sun.svg',
         color: Colors.black87,
       );
     }
