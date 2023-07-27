@@ -180,6 +180,7 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
                       ),
 
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
 
                           // 대기 지수
