@@ -39,6 +39,7 @@ dependencies:
   http: ^0.13.6
   google_fonts: ^4.0.4
   flutter_svg: ^1.1.6
+  timer_builder: ^2.0.0
 
 dev_dependencies:
   flutter_test:
