@@ -26,4 +26,17 @@ class Network {
     }
 
   }
+
+  Future<dynamic> getAirPollutionJsonData() async {
+
+    http.Response airPollutionResponse = await http.get(Uri.parse(airPollutionUri));
+
+    if( airPollutionResponse.statusCode == 200 ) {
+
+      String jsonData = airPollutionResponse.body;
+      var parsingData = jsonDecode(jsonData);
+
+      return parsingData;
+    }
+  }
 }
