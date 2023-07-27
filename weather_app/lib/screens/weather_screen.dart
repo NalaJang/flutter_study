@@ -34,8 +34,10 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text(''),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
         // 좌측 아이콘일 때는 leading 속성 사용
         leading: IconButton(
           icon: Icon(Icons.near_me),
