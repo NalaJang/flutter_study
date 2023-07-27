@@ -106,7 +106,14 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
                           },
                       ),
                       Text(
-                        DateFormat(' - EEEE').format(date),
+                        DateFormat(' - EEEE, ').format(date),
+                        style: GoogleFonts.lato(
+                            fontSize: 16.0,
+                            color: Colors.white
+                        ),
+                      ),
+                      Text(
+                        DateFormat('d MMM, yyy').format(date),
                         style: GoogleFonts.lato(
                             fontSize: 16.0,
                             color: Colors.white
