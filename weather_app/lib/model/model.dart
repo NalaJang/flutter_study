@@ -31,5 +31,10 @@ class Model {
     }
   }
 
+  Widget? getAirPollutionIcon(int condition) {
+    if( condition <3 ) {
+      return Image(image: AssetImage('image/bad.png'));
+    }
+  }
 
 }
