@@ -32,9 +32,22 @@ class Model {
   }
 
   String? getAirPollutionIcon(int condition) {
-    if( condition < 3 ) {
+    if( condition == 1 ) {
+      return 'image/good.png';
+
+    } else if( condition == 2 ) {
+      return 'image/fair.png';
+
+    } else if( condition == 3 ) {
+      return 'image/moderate.png';
+
+    } else if( condition == 4 ) {
+      return 'image/poor.png';
+
+    } else if( condition == 5 ) {
       return 'image/bad.png';
     }
+
   }
 
 }
