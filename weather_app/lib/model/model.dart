@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class Model {
 
-  Widget getWeatherIcon(int condition) {
+  Widget? getWeatherIcon(int condition) {
     if( condition < 300 ) {
       return SvgPicture.asset(
         'svg/climacon-cloud_lightning.svg',
@@ -29,6 +29,7 @@ class Model {
         color: Colors.black87,
       );
     }
-
   }
+
+
 }
