@@ -219,7 +219,7 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
                           Column(
                             children: [
                               Text(
-                                'AQI(대기질지수)',
+                                '미세먼지',
                                 style: GoogleFonts.lato(
                                     fontSize: 14.0,
                                     color: Colors.white
@@ -228,19 +228,21 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
                               SizedBox(
                                 height: 10.0,
                               ),
-                              Image.asset(
-                                'image/bad.png',
-                                width: 37.0,
-                                height: 35.0,
+                              Text(
+                                '174.75',
+                                style: GoogleFonts.lato(
+                                    fontSize: 24.0,
+                                    color: Colors.white
+                                ),
                               ),
                               SizedBox(
                                 height: 10.0,
                               ),
                               Text(
-                                '"매우 나쁨"',
+                                '㎍/m3',
                                 style: GoogleFonts.lato(
                                     fontSize: 14.0,
-                                    color: Colors.black87,
+                                    color: Colors.white,
                                     fontWeight: FontWeight.bold
                                 ),
                               )
@@ -251,7 +253,7 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
                           Column(
                             children: [
                               Text(
-                                'AQI(대기질지수)',
+                                '초미세먼지',
                                 style: GoogleFonts.lato(
                                     fontSize: 14.0,
                                     color: Colors.white
@@ -260,19 +262,21 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
                               SizedBox(
                                 height: 10.0,
                               ),
-                              Image.asset(
-                                'image/bad.png',
-                                width: 37.0,
-                                height: 35.0,
+                              Text(
+                                '84.03',
+                                style: GoogleFonts.lato(
+                                    fontSize: 24.0,
+                                    color: Colors.white
+                                ),
                               ),
                               SizedBox(
                                 height: 10.0,
                               ),
                               Text(
-                                '"매우 나쁨"',
+                                '㎍/m3',
                                 style: GoogleFonts.lato(
                                     fontSize: 14.0,
-                                    color: Colors.black87,
+                                    color: Colors.white,
                                     fontWeight: FontWeight.bold
                                 ),
                               )
