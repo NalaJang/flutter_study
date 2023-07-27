@@ -80,44 +80,64 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        height: 150.0,
-                      ),
-                      Text('Seoul',
-                      style: GoogleFonts.lato(
-                        fontSize: 35.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white
-                      ),
-                      ),
-                      Row(
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          TimerBuilder.periodic(
-                              (Duration(minutes: 1)),
-
-                              // builder widget 은 반드시 widget 을 return 해야 한다.
-                              builder: (context){
-                                print(getSystemTime());
-                                return Text(
-                                  '${getSystemTime()}',
-                                  style: GoogleFonts.lato(
-                                    fontSize: 16.0,
-                                    color: Colors.white
-                                  ),
-                                );
-                              },
+                          SizedBox(
+                            height: 150.0,
                           ),
                           Text(
-                            DateFormat(' - EEEE, ').format(date),
+                            'Seoul',
                             style: GoogleFonts.lato(
-                                fontSize: 16.0,
-                                color: Colors.white
+                              fontSize: 35.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white
                             ),
                           ),
+                          Row(
+                            children: [
+                              TimerBuilder.periodic(
+                                  (Duration(minutes: 1)),
+
+                                  // builder widget 은 반드시 widget 을 return 해야 한다.
+                                  builder: (context){
+                                    print(getSystemTime());
+                                    return Text(
+                                      '${getSystemTime()}',
+                                      style: GoogleFonts.lato(
+                                        fontSize: 16.0,
+                                        color: Colors.white
+                                      ),
+                                    );
+                                  },
+                              ),
+                              Text(
+                                DateFormat(' - EEEE, ').format(date),
+                                style: GoogleFonts.lato(
+                                    fontSize: 16.0,
+                                    color: Colors.white
+                                ),
+                              ),
+                              Text(
+                                DateFormat('d MMM, yyy').format(date),
+                                style: GoogleFonts.lato(
+                                    fontSize: 16.0,
+                                    color: Colors.white
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+
+                      // 날씨 정보를 위한 column
+                      Column(
+                        children: [
                           Text(
-                            DateFormat('d MMM, yyy').format(date),
+                            'Seoul',
                             style: GoogleFonts.lato(
-                                fontSize: 16.0,
+                                fontSize: 35.0,
+                                fontWeight: FontWeight.bold,
                                 color: Colors.white
                             ),
                           ),
@@ -125,13 +145,6 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
                       )
                     ],
                   ),
-
-                  // 날씨 정보를 위한 column
-                  Column(
-                    children: [
-
-                    ],
-                  )
                 ],
               ),
             )
