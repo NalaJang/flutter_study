@@ -35,6 +35,7 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
 
   String getSystemTime() {
     var now = DateTime.now();
+    return DateFormat("h:mm a").format(now);
   }
 
   @override
@@ -89,8 +90,17 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
                     children: [
                       TimerBuilder.periodic(
                           (Duration(minutes: 1)),
-                          builder: (context){
 
+                          // builder widget 은 반드시 widget 을 return 해야 한다.
+                          builder: (context){
+                            print(getSystemTime());
+                            return Text(
+                              '${getSystemTime()}',
+                              style: GoogleFonts.lato(
+                                fontSize: 16.0,
+                                color: Colors.white
+                              ),
+                            );
                           },
                       ),
                     ],
