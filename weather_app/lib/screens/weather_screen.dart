@@ -125,6 +125,13 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
                       )
                     ],
                   ),
+
+                  // 날씨 정보를 위한 column
+                  Column(
+                    children: [
+
+                    ],
+                  )
                 ],
               ),
             )
