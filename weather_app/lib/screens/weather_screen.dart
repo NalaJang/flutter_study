@@ -6,10 +6,11 @@ import 'package:intl/intl.dart';
 import 'package:weather_app/model/model.dart';
 
 class WeatherScreenState extends StatefulWidget {
-  const WeatherScreenState({super.key, this.parseWeatherData});
+  const WeatherScreenState({super.key, this.parseWeatherData, this.parseAirPollutionData});
 
   // 다양한 타입의 날씨 데이터를 전달 받기 때문에 타입을 dynamic 또는 따로 적지 않는다.
   final dynamic parseWeatherData;
+  final dynamic parseAirPollutionData;
 
   @override
   State<WeatherScreenState> createState() => _WeatherScreenStateState();
