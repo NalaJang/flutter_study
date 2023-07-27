@@ -145,6 +145,25 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
                       )
                     ],
                   ),
+
+                  // 대기 지수를 보여주기 위한 column
+                  Column(
+                    children: [
+                      Divider(
+                        height: 15.0,
+                        thickness: 2.0,
+                        color: Colors.white30,
+                      ),
+
+                      Row(
+                        children: [
+                          Text(
+                            '미세먼지'
+                         )
+                        ],
+                      )
+                    ],
+                  )
                 ],
               ),
             )
