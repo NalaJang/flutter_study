@@ -43,12 +43,17 @@ class _LoadingState extends State<Loading> {
     // 'open weather' 사이트에서 받은 apiKey 로 날씨 정보 가져오기
     String weatherUri = 'https://api.openweathermap.org/data/2.5/weather?'
         'lat=$getLatitude&lon=$getLongitude&appid=$apiKey&units=metric';
-    Network network = Network(weatherUri);
+
+    String airPollutionUri = 'http://api.openweathermap.org/data/2.5/air_pollution?'
+        'lat=$getLatitude&lon=$getLongitude&appid=$apiKey';
+
+    Network network = Network(weatherUri, airPollutionUri);
 
     // getJsonData() 가 Future<dynamic> 타입으로 데이터를 전달해주고 있으므로 await 를 붙여준다.
     var weatherData = await network.getJsonData();
+    var airPollutionData =
     print('weather: $weatherData');
-    
+
     Navigator.push(context, MaterialPageRoute(builder: (context){
       return WeatherScreenState(parseWeatherData: weatherData,);
     }));
