@@ -51,8 +51,9 @@ class _LoadingState extends State<Loading> {
 
     // getJsonData() 가 Future<dynamic> 타입으로 데이터를 전달해주고 있으므로 await 를 붙여준다.
     var weatherData = await network.getJsonData();
-    var airPollutionData =
+    var airPollutionData = await network.getAirPollutionJsonData();
     print('weather: $weatherData');
+    print('airPollutionData: $airPollutionData');
 
     Navigator.push(context, MaterialPageRoute(builder: (context){
       return WeatherScreenState(parseWeatherData: weatherData,);
