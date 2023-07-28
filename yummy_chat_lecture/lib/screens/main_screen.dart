@@ -164,10 +164,14 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                     ],
                   ),
 
+                  // 사용자 정보 입력 칸
                   Container(
+                    margin: EdgeInsets.only(top: 20),
                     child: Form(
                       child: Column(
                         children: [
+
+                          // userName
                           TextFormField(
                             decoration: InputDecoration(
                               prefixIcon: Icon(
@@ -198,6 +202,82 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 color: Palette.textColor1
                               ),
                               contentPadding: EdgeInsets.all(10)
+                            ),
+                          ),
+
+                          SizedBox(
+                            height: 8,
+                          ),
+
+                          // email
+                          TextFormField(
+                            decoration: InputDecoration(
+                                prefixIcon: Icon(
+                                  Icons.email,
+                                  color: Palette.iconColor,
+                                ),
+
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Palette.textColor1
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(35.0)
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Palette.textColor1
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(35.0)
+                                  ),
+                                ),
+
+                                hintText: 'email',
+                                hintStyle: TextStyle(
+                                    fontSize: 14,
+                                    color: Palette.textColor1
+                                ),
+                                contentPadding: EdgeInsets.all(10)
+                            ),
+                          ),
+
+                          SizedBox(
+                            height: 8,
+                          ),
+
+                          // password
+                          TextFormField(
+                            decoration: InputDecoration(
+                                prefixIcon: Icon(
+                                  Icons.lock,
+                                  color: Palette.iconColor,
+                                ),
+
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Palette.textColor1
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(35.0)
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Palette.textColor1
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(35.0)
+                                  ),
+                                ),
+
+                                hintText: 'password',
+                                hintStyle: TextStyle(
+                                    fontSize: 14,
+                                    color: Palette.textColor1
+                                ),
+                                contentPadding: EdgeInsets.all(10)
                             ),
                           )
                         ],
