@@ -33,6 +33,7 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
   String? aqiIcon;
   double? co;
   double? o3;
+  String? airCondition;
 
   @override
   void initState() {
@@ -55,6 +56,7 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
     aqiIcon = model.getAirPollutionIcon(aqi!);
     co = airPollutionData['list'][0]['components']['co'];
     o3 = airPollutionData['list'][0]['components']['o3'];
+    airCondition = model.getAirCondition(aqi!);
   }
 
   String getSystemTime() {
@@ -228,7 +230,7 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
                                 height: 10.0,
                               ),
                               Text(
-                                '"매우 나쁨"',
+                                '$airCondition',
                                 style: GoogleFonts.lato(
                                     fontSize: 14.0,
                                     color: Colors.black87,
