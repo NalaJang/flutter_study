@@ -50,4 +50,23 @@ class Model {
 
   }
 
+  String? getAirCondition(int index) {
+    if( index == 1 ) {
+      return '"매우 좋음"';
+
+    } else if( index == 2 ) {
+      return '"좋음"';
+
+    } else if( index == 3 ) {
+      return '"보통"';
+
+    } else if( index == 4 ) {
+      return '"나쁨"';
+
+    } else if( index == 5 ) {
+      return '"매우 나쁨"';
+
+    }
+  }
+
 }
