@@ -197,6 +197,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 fontSize: 14,
                                 color: Palette.textColor1
                               ),
+                              contentPadding: EdgeInsets.all(10)
                             ),
                           )
                         ],
