@@ -183,6 +183,14 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     Radius.circular(35.0)
                                 ),
                               ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Palette.textColor1
+                                ),
+                                borderRadius: BorderRadius.all(
+                                    Radius.circular(35.0)
+                                ),
+                              ),
                             ),
                           )
                         ],
