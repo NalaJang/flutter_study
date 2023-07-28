@@ -83,10 +83,16 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
           ),
 
           // text form field
-          Positioned(
+          AnimatedPositioned(
+            duration: Duration(milliseconds: 500),
+            curve: Curves.easeIn,
+
             top: 180,
             child:
-            Container(
+            AnimatedContainer(
+              duration: Duration(milliseconds: 500),
+              curve: Curves.easeIn,
+
               padding: EdgeInsets.all(20.0),
               height: isSignupScreen ? 280.0 : 250.0,
               width: MediaQuery.of(context).size.width -40,
@@ -381,7 +387,10 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
           ),
 
           // next button
-          Positioned(
+          AnimatedPositioned(
+            duration: Duration(milliseconds: 500),
+            curve: Curves.easeIn,
+
             top: isSignupScreen ? 430 : 390,
             right: 0,
             left: 0,
