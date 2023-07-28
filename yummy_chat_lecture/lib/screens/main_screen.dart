@@ -121,6 +121,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                               ),
                             ),
 
+                            if(!isSignupScreen)
                             Container(
                               margin: EdgeInsets.only(top: 3),
                               height: 2,
