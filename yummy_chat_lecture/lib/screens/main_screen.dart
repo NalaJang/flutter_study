@@ -19,6 +19,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
 
       body: Stack(
         children: [
+
+          // 배경
           Positioned(
             top: 0,
             right: 0,
@@ -76,6 +78,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
             )
           ),
 
+          // text form field
           Positioned(
             top: 180,
             child:
@@ -288,6 +291,57 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
               ),
             ),
           ),
+
+          // next button
+          Positioned(
+            top: 430,
+            right: 0,
+            left: 0,
+
+            child: Center(
+              child: Container(
+                padding: EdgeInsets.all(15),
+                height: 90,
+                width: 90,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(50)
+                ),
+
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      // gradient 는 몇 가지 색상을 가지므로 colors 는 list 형태를 가진다.
+                      colors: [
+                        Colors.orange,
+                        Colors.red
+                      ],
+                      // 리스트 내의 색상 시작과 끝
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight
+                    ),
+
+                    borderRadius: BorderRadius.circular(30),
+
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.3),
+                        spreadRadius: 1,
+                        blurRadius: 1,
+                        // 한 지점에서 다른 지점까지의 거리 즉, 버튼 그림자 효과가 가지는 버튼으로부터의 수직, 수평
+                        offset: Offset(0, 1)
+                      ),
+                    ],
+                  ),
+
+                  child: Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            )
+          )
         ],
       ),
     );
