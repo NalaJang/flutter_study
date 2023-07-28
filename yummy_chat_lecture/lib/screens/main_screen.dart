@@ -88,7 +88,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
             child:
             Container(
               padding: EdgeInsets.all(20.0),
-              height: 280.0,
+              height: isSignupScreen ? 280.0 : 250.0,
               width: MediaQuery.of(context).size.width -40,
               margin: EdgeInsets.symmetric(horizontal: 20.0),
               decoration: BoxDecoration(
@@ -305,7 +305,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                           TextFormField(
                             decoration: InputDecoration(
                                 prefixIcon: Icon(
-                                  Icons.account_circle,
+                                  Icons.email,
                                   color: Palette.iconColor,
                                 ),
 
@@ -326,7 +326,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   ),
                                 ),
 
-                                hintText: 'User name',
+                                hintText: 'email',
                                 hintStyle: TextStyle(
                                     fontSize: 14,
                                     color: Palette.textColor1
@@ -342,7 +342,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                           TextFormField(
                             decoration: InputDecoration(
                                 prefixIcon: Icon(
-                                  Icons.account_circle,
+                                  Icons.lock,
                                   color: Palette.iconColor,
                                 ),
 
@@ -363,7 +363,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   ),
                                 ),
 
-                                hintText: 'User name',
+                                hintText: 'password',
                                 hintStyle: TextStyle(
                                     fontSize: 14,
                                     color: Palette.textColor1
@@ -382,7 +382,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
 
           // next button
           Positioned(
-            top: 430,
+            top: isSignupScreen ? 430 : 390,
             right: 0,
             left: 0,
 
@@ -439,7 +439,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
 
             child: Column(
               children: [
-                Text('or Signup with'),
+                Text(isSignupScreen ? 'or Signup with' : 'or SignIn with'),
 
                 SizedBox(
                   height: 10,
