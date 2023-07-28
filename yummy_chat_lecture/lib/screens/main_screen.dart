@@ -116,7 +116,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
-                                color: Palette.activeColor
+                                color: !isSignupScreen ?
+                                Palette.activeColor : Palette.textColor1
                               ),
                             ),
 
