@@ -341,7 +341,38 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                 ),
               ),
             )
-          )
+          ),
+
+          // text 와 google login button
+          Positioned(
+            top: MediaQuery.of(context).size.height -125,
+            right: 0,
+            left: 0,
+
+            child: Column(
+              children: [
+                Text('or Signup with'),
+
+                SizedBox(
+                  height: 10,
+                ),
+
+                TextButton.icon(
+                  onPressed: (){},
+                  icon: Icon(Icons.add),
+                  label: Text('Google'),
+                  style: TextButton.styleFrom(
+                      primary: Colors.white,
+                    minimumSize: Size(155, 40),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)
+                    ),
+                    backgroundColor: Palette.googleColor
+                  ),
+                ),
+              ],
+            )
+          ),
         ],
       ),
     );
