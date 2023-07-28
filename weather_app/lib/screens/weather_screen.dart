@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:timer_builder/timer_builder.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_app/model/model.dart';
@@ -31,8 +30,8 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
   // 대기 지수
   int? aqi;
   String? aqiIcon;
-  double? co;
-  double? o3;
+  double? pm10; // 미세먼지
+  double? pm25; // 초미세먼지
   String? airCondition;
 
   @override
@@ -54,8 +53,8 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
 
     aqi = airPollutionData['list'][0]['main']['aqi'];
     aqiIcon = model.getAirPollutionIcon(aqi!);
-    co = airPollutionData['list'][0]['components']['co'];
-    o3 = airPollutionData['list'][0]['components']['o3'];
+    pm10 = airPollutionData['list'][0]['components']['co'];
+    pm25 = airPollutionData['list'][0]['components']['o3'];
     airCondition = model.getAirCondition(aqi!);
   }
 
@@ -254,7 +253,7 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
                                 height: 10.0,
                               ),
                               Text(
-                                '$co',
+                                '$pm10',
                                 style: GoogleFonts.lato(
                                     fontSize: 24.0,
                                     color: Colors.white
@@ -288,7 +287,7 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
                                 height: 10.0,
                               ),
                               Text(
-                                '$o3',
+                                '$pm25',
                                 style: GoogleFonts.lato(
                                     fontSize: 24.0,
                                     color: Colors.white
