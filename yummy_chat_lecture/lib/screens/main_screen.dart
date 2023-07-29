@@ -133,6 +133,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
               // 유효성 검사에서 경고 메시지가 뜨게 되면 container 의 크기 부족(?)으로 내부 내용들이 가려지게 된다.
               // 그로 인해 생기는 에러를 없애기 위해 컨테이너 내부에 scroll 기능을 추가.
               child: SingleChildScrollView(
+                padding: EdgeInsets.only(bottom: 20),
                 child: Column(
                   children: [
                     Row(
