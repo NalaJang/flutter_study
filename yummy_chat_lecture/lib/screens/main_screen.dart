@@ -350,6 +350,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                 ),
 
                 child: GestureDetector(
+                  onTap: (){
+                    _tryValidation();
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
