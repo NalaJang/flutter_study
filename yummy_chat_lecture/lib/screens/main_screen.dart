@@ -226,7 +226,6 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
 
                             decoration: model.textFormDecoration('User name')
                           ),
-                          // textFormField(1, 'User name'),
 
                           const SizedBox(
                             height: 8,
@@ -284,6 +283,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
 
                       child: Column(
                         children: [
+
+                          // email
                           TextFormField(
                               key: ValueKey(4),
                               validator: (value){
@@ -304,6 +305,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                             height: 8,
                           ),
 
+                          // password
                           TextFormField(
                               key: ValueKey(5),
                               validator: (value){
