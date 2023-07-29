@@ -220,8 +220,10 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
 
                             // 사용자가 입력한 value 값을 저장하는 기능
                             onSaved: (value){
-
+                              // value 값이 전달될 때마다 해당 변수에 저장된다.
+                              userName = value!;
                             },
+
                             decoration: model.textFormDecoration('User name')
                           ),
                           // textFormField(1, 'User name'),
@@ -240,6 +242,10 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 return null;
                               },
 
+                              onSaved: (value){
+                                userEmail = value!;
+                              },
+
                               decoration: model.textFormDecoration('Email')
                           ),
 
@@ -255,6 +261,10 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   return 'Please must be at least 7 characters long.';
                                 }
                                 return null;
+                              },
+
+                              onSaved: (value){
+                                userPassword = value!;
                               },
 
                               decoration: model.textFormDecoration('Password')
@@ -283,6 +293,10 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 return null;
                               },
 
+                              onSaved: (value){
+                                userEmail = value!;
+                              },
+
                               decoration: model.textFormDecoration('Email')
                           ),
 
@@ -297,6 +311,10 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   return 'Please must be at least 7 characters long.';
                                 }
                                 return null;
+                              },
+
+                              onSaved: (value){
+                                userPassword = value!;
                               },
 
                               decoration: model.textFormDecoration('Password')
