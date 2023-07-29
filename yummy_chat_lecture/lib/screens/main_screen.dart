@@ -130,202 +130,206 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                 ],
               ),
 
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
+              // 유효성 검사에서 경고 메시지가 뜨게 되면 container 의 크기 부족(?)으로 내부 내용들이 가려지게 된다.
+              // 그로 인해 생기는 에러를 없애기 위해 컨테이너 내부에 scroll 기능을 추가.
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
 
-                      // login
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            isSignupScreen = false;
-                          });
-                        },
-                        child: Column(
-                          children: [
-                            Text(
-                              'LOGIN',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: !isSignupScreen ?
-                                Palette.activeColor : Palette.textColor1
-                              ),
-                            ),
-
-                            if(!isSignupScreen)
-                            Container(
-                              margin: const EdgeInsets.only(top: 3),
-                              height: 2,
-                              width: 55,
-                              color: Colors.orange,
-                            )
-                          ],
-                        ),
-                      ),
-
-                      // signup
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            isSignupScreen = true;
-                          });
-                        },
-                        child: Column(
-                          children: [
-                            Text(
-                              'SIGNUP',
-                              style: TextStyle(
+                        // login
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isSignupScreen = false;
+                            });
+                          },
+                          child: Column(
+                            children: [
+                              Text(
+                                'LOGIN',
+                                style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
-                                  color: isSignupScreen ?
+                                  color: !isSignupScreen ?
                                   Palette.activeColor : Palette.textColor1
+                                ),
                               ),
+
+                              if(!isSignupScreen)
+                              Container(
+                                margin: const EdgeInsets.only(top: 3),
+                                height: 2,
+                                width: 55,
+                                color: Colors.orange,
+                              )
+                            ],
+                          ),
+                        ),
+
+                        // signup
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isSignupScreen = true;
+                            });
+                          },
+                          child: Column(
+                            children: [
+                              Text(
+                                'SIGNUP',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: isSignupScreen ?
+                                    Palette.activeColor : Palette.textColor1
+                                ),
+                              ),
+
+                              if(isSignupScreen)
+                              Container(
+                                margin: const EdgeInsets.only(top: 3),
+                                height: 2,
+                                width: 55,
+                                color: Colors.orange,
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+
+                    // signup text field
+                    if( isSignupScreen )
+                    // 사용자 정보 입력 칸
+                    Container(
+                      margin: const EdgeInsets.only(top: 20),
+                      child: Form(
+                        key: _formKey,
+
+                        child: Column(
+                          children: [
+                            // userName
+                            TextFormField(
+                              key: ValueKey(1),
+                              validator: (value){
+                                if( value!.isEmpty || value.length < 4 ) {
+                                  return 'Please enter at least 4 characters';
+                                }
+                                return null;
+                              },
+
+                              // 사용자가 입력한 value 값을 저장하는 기능
+                              onSaved: (value){
+                                // value 값이 전달될 때마다 해당 변수에 저장된다.
+                                userName = value!;
+                              },
+
+                              decoration: model.textFormDecoration('User name')
                             ),
 
-                            if(isSignupScreen)
-                            Container(
-                              margin: const EdgeInsets.only(top: 3),
-                              height: 2,
-                              width: 55,
-                              color: Colors.orange,
-                            )
+                            const SizedBox(
+                              height: 8,
+                            ),
+
+                            // email
+                            TextFormField(
+                                key: ValueKey(2),
+                                validator: (value){
+                                  if( value!.isEmpty || value.contains('@') ) {
+                                    return 'Please enter a valid email address';
+                                  }
+                                  return null;
+                                },
+
+                                onSaved: (value){
+                                  userEmail = value!;
+                                },
+
+                                decoration: model.textFormDecoration('Email')
+                            ),
+
+                            const SizedBox(
+                              height: 8,
+                            ),
+
+                            // password
+                            TextFormField(
+                                key: ValueKey(3),
+                                validator: (value){
+                                  if( value!.isEmpty || value.length < 6 ) {
+                                    return 'Please must be at least 7 characters long.';
+                                  }
+                                  return null;
+                                },
+
+                                onSaved: (value){
+                                  userPassword = value!;
+                                },
+
+                                decoration: model.textFormDecoration('Password')
+                            ),
                           ],
                         ),
-                      )
-                    ],
-                  ),
-
-                  // signup text field
-                  if( isSignupScreen )
-                  // 사용자 정보 입력 칸
-                  Container(
-                    margin: const EdgeInsets.only(top: 20),
-                    child: Form(
-                      key: _formKey,
-
-                      child: Column(
-                        children: [
-                          // userName
-                          TextFormField(
-                            key: ValueKey(1),
-                            validator: (value){
-                              if( value!.isEmpty || value.length < 4 ) {
-                                return 'Please enter at least 4 characters';
-                              }
-                              return null;
-                            },
-
-                            // 사용자가 입력한 value 값을 저장하는 기능
-                            onSaved: (value){
-                              // value 값이 전달될 때마다 해당 변수에 저장된다.
-                              userName = value!;
-                            },
-
-                            decoration: model.textFormDecoration('User name')
-                          ),
-
-                          const SizedBox(
-                            height: 8,
-                          ),
-
-                          // email
-                          TextFormField(
-                              key: ValueKey(2),
-                              validator: (value){
-                                if( value!.isEmpty || value.contains('@') ) {
-                                  return 'Please enter a valid email address';
-                                }
-                                return null;
-                              },
-
-                              onSaved: (value){
-                                userEmail = value!;
-                              },
-
-                              decoration: model.textFormDecoration('Email')
-                          ),
-
-                          const SizedBox(
-                            height: 8,
-                          ),
-
-                          // password
-                          TextFormField(
-                              key: ValueKey(3),
-                              validator: (value){
-                                if( value!.isEmpty || value.length < 6 ) {
-                                  return 'Please must be at least 7 characters long.';
-                                }
-                                return null;
-                              },
-
-                              onSaved: (value){
-                                userPassword = value!;
-                              },
-
-                              decoration: model.textFormDecoration('Password')
-                          ),
-                        ],
                       ),
                     ),
-                  ),
 
-                  // login text field
-                  if( !isSignupScreen )
-                  Container(
-                    margin: EdgeInsets.only(top: 20),
+                    // login text field
+                    if( !isSignupScreen )
+                    Container(
+                      margin: EdgeInsets.only(top: 20),
 
-                    child: Form(
-                      key: _formKey,
+                      child: Form(
+                        key: _formKey,
 
-                      child: Column(
-                        children: [
+                        child: Column(
+                          children: [
 
-                          // email
-                          TextFormField(
-                              key: ValueKey(4),
-                              validator: (value){
-                                if( value!.isEmpty || value.contains('@') ) {
-                                  return 'Please enter a valid email address';
-                                }
-                                return null;
-                              },
+                            // email
+                            TextFormField(
+                                key: ValueKey(4),
+                                validator: (value){
+                                  if( value!.isEmpty || value.contains('@') ) {
+                                    return 'Please enter a valid email address';
+                                  }
+                                  return null;
+                                },
 
-                              onSaved: (value){
-                                userEmail = value!;
-                              },
+                                onSaved: (value){
+                                  userEmail = value!;
+                                },
 
-                              decoration: model.textFormDecoration('Email')
-                          ),
+                                decoration: model.textFormDecoration('Email')
+                            ),
 
-                          const SizedBox(
-                            height: 8,
-                          ),
+                            const SizedBox(
+                              height: 8,
+                            ),
 
-                          // password
-                          TextFormField(
-                              key: ValueKey(5),
-                              validator: (value){
-                                if( value!.isEmpty || value.length < 6 ) {
-                                  return 'Please must be at least 7 characters long.';
-                                }
-                                return null;
-                              },
+                            // password
+                            TextFormField(
+                                key: ValueKey(5),
+                                validator: (value){
+                                  if( value!.isEmpty || value.length < 6 ) {
+                                    return 'Please must be at least 7 characters long.';
+                                  }
+                                  return null;
+                                },
 
-                              onSaved: (value){
-                                userPassword = value!;
-                              },
+                                onSaved: (value){
+                                  userPassword = value!;
+                                },
 
-                              decoration: model.textFormDecoration('Password')
-                          ),
-                        ],
+                                decoration: model.textFormDecoration('Password')
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),
