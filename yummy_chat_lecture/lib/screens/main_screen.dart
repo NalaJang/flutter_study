@@ -399,8 +399,12 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
             ),
 
             // text 와 google login button
-            Positioned(
-              top: MediaQuery.of(context).size.height -125,
+            AnimatedPositioned(
+              duration: Duration(milliseconds: 500),
+              curve: Curves.easeIn,
+              top: isSignupScreen ?
+              MediaQuery.of(context).size.height -125 : MediaQuery.of(context).size.height -165,
+
               right: 0,
               left: 0,
 
