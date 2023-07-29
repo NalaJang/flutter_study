@@ -11,6 +11,18 @@ class LoginSignupScreen extends StatefulWidget {
 class _LoginSignupScreenState extends State<LoginSignupScreen> {
 
   bool isSignupScreen = true;
+  // 사용자가 submit button 을 클릭했을 때 text field 의 값 유효성 검사를 위한
+  // 밸리데이션 기능을 실행하기 위한 글로벌 키 생성
+  final _formKey = GlobalKey<FormState>();
+
+  void _tryValidation() {
+    // 현재 값에 대한 유효성 검사를 하는 것이므로 currentState 에 대해 null check 를 한다.
+    final isValid = _formKey.currentState!.validate();
+
+    if( isValid ) {
+      _formKey.currentState!.save();
+    }
+  }
 
   TextFormField textFormField(int key, String hintText) {
     var icon;
@@ -233,6 +245,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                   Container(
                     margin: const EdgeInsets.only(top: 20),
                     child: Form(
+                      key: _formKey,
+
                       child: Column(
                         children: [
                           // userName
@@ -262,6 +276,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                     margin: EdgeInsets.only(top: 20),
 
                     child: Form(
+                      key: _formKey,
+
                       child: Column(
                         children: [
                           textFormField(4, 'Email'),
