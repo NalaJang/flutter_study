@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yummy_chat_lecture/config/palette.dart';
+import 'package:yummy_chat_lecture/model/model.dart';
 
 class LoginSignupScreen extends StatefulWidget {
   const LoginSignupScreen({Key? key}) : super(key: key);
@@ -10,6 +11,7 @@ class LoginSignupScreen extends StatefulWidget {
 
 class _LoginSignupScreenState extends State<LoginSignupScreen> {
 
+  Model model = Model();
   bool isSignupScreen = true;
   // 사용자가 submit button 을 클릭했을 때 text field 의 값 유효성 검사를 위한
   // 밸리데이션 기능을 실행하기 위한 글로벌 키 생성
@@ -23,56 +25,6 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
       _formKey.currentState!.save();
     }
   }
-
-  TextFormField textFormField(int key, String hintText) {
-    var icon;
-
-    if( hintText == 'User name' ) {
-      icon = Icons.account_circle;
-
-    } else if( hintText == 'Email' ) {
-      icon = Icons.email;
-
-    } else if( hintText == 'Password' ) {
-      icon = Icons.lock;
-    }
-
-    return TextFormField(
-      key: ValueKey(key),
-      decoration: InputDecoration(
-          prefixIcon: Icon(
-            icon,
-            color: Palette.iconColor,
-          ),
-
-          enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(
-                color: Palette.textColor1
-            ),
-            borderRadius: BorderRadius.all(
-                Radius.circular(35.0)
-            ),
-          ),
-
-          focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(
-                color: Palette.textColor1
-            ),
-            borderRadius: BorderRadius.all(
-                Radius.circular(35.0)
-            ),
-          ),
-
-          hintText: '$hintText',
-          hintStyle: TextStyle(
-              fontSize: 14,
-              color: Palette.textColor1
-          ),
-
-          contentPadding: EdgeInsets.all(10)
-      ),
-    );
-  } // textFormField
 
   @override
   Widget build(BuildContext context) {
@@ -250,21 +202,52 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                       child: Column(
                         children: [
                           // userName
-                          textFormField(1, 'User name'),
+                          TextFormField(
+                            key: ValueKey(1),
+                            validator: (value){
+                              if( value!.isEmpty || value.length < 4 ) {
+                                return 'Please enter at least 4 characters';
+                              }
+                              return null;
+                            },
+
+                            decoration: model.textFormDecoration('User name')
+                          ),
+                          // textFormField(1, 'User name'),
 
                           const SizedBox(
                             height: 8,
                           ),
 
                           // email
-                          textFormField(2, 'Email'),
+                          TextFormField(
+                              key: ValueKey(2),
+                              validator: (value){
+                                if( value!.isEmpty || value.contains('@') ) {
+                                  return 'Please enter a valid email address';
+                                }
+                                return null;
+                              },
+
+                              decoration: model.textFormDecoration('Email')
+                          ),
 
                           const SizedBox(
                             height: 8,
                           ),
 
                           // password
-                          textFormField(3, 'Password'),
+                          TextFormField(
+                              key: ValueKey(3),
+                              validator: (value){
+                                if( value!.isEmpty || value.length < 6 ) {
+                                  return 'Please must be at least 7 characters long.';
+                                }
+                                return null;
+                              },
+
+                              decoration: model.textFormDecoration('Password')
+                          ),
                         ],
                       ),
                     ),
@@ -280,13 +263,33 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
 
                       child: Column(
                         children: [
-                          textFormField(4, 'Email'),
+                          TextFormField(
+                              key: ValueKey(4),
+                              validator: (value){
+                                if( value!.isEmpty || value.contains('@') ) {
+                                  return 'Please enter a valid email address';
+                                }
+                                return null;
+                              },
+
+                              decoration: model.textFormDecoration('Email')
+                          ),
 
                           const SizedBox(
                             height: 8,
                           ),
 
-                          textFormField(5, 'Password')
+                          TextFormField(
+                              key: ValueKey(5),
+                              validator: (value){
+                                if( value!.isEmpty || value.length < 6 ) {
+                                  return 'Please must be at least 7 characters long.';
+                                }
+                                return null;
+                              },
+
+                              decoration: model.textFormDecoration('Password')
+                          ),
                         ],
                       ),
                     ),
