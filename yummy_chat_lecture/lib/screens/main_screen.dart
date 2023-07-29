@@ -39,6 +39,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
       backgroundColor: Palette.backgroundColor,
 
       body: GestureDetector(
+        onTap: (){
+          FocusScope.of(context).unfocus();
+        },
         child: Stack(
           children: [
 
