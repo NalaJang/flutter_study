@@ -12,7 +12,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
 
   bool isSignupScreen = true;
 
-  TextFormField textFormField(String hintText) {
+  TextFormField textFormField(int key, String hintText) {
     var icon;
 
     if( hintText == 'User name' ) {
@@ -26,6 +26,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
     }
 
     return TextFormField(
+      key: ValueKey(key),
       decoration: InputDecoration(
           prefixIcon: Icon(
             icon,
@@ -235,21 +236,21 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                       child: Column(
                         children: [
                           // userName
-                          textFormField('User name'),
+                          textFormField(1, 'User name'),
 
                           const SizedBox(
                             height: 8,
                           ),
 
                           // email
-                          textFormField('Email'),
+                          textFormField(2, 'Email'),
 
                           const SizedBox(
                             height: 8,
                           ),
 
                           // password
-                          textFormField('Password'),
+                          textFormField(3, 'Password'),
                         ],
                       ),
                     ),
@@ -263,13 +264,13 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                     child: Form(
                       child: Column(
                         children: [
-                          textFormField('Email'),
+                          textFormField(4, 'Email'),
 
                           const SizedBox(
                             height: 8,
                           ),
 
-                          textFormField('Password')
+                          textFormField(5, 'Password')
                         ],
                       ),
                     ),
