@@ -17,10 +17,17 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
   // 밸리데이션 기능을 실행하기 위한 글로벌 키 생성
   final _formKey = GlobalKey<FormState>();
 
+  // textFormField 의 onSaved()에 저장된 value 값을 실제 밸리데이션 기능에 사용하기 위한 변수 선언
+  String userName = '';
+  String userEmail = '';
+  String userPassword = '';
+
+  // _formKey 를 사용해서 밸리데이션 기능 실행
   void _tryValidation() {
     // 현재 값에 대한 유효성 검사를 하는 것이므로 currentState 에 대해 null check 를 한다.
     final isValid = _formKey.currentState!.validate();
 
+    // 폼 스테이트 값이 유효하다면 값을 저장
     if( isValid ) {
       _formKey.currentState!.save();
     }
@@ -211,6 +218,10 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                               return null;
                             },
 
+                            // 사용자가 입력한 value 값을 저장하는 기능
+                            onSaved: (value){
+
+                            },
                             decoration: model.textFormDecoration('User name')
                           ),
                           // textFormField(1, 'User name'),
