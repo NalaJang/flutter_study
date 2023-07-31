@@ -271,6 +271,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                               // password
                               TextFormField(
                                   key: ValueKey(3),
+                                  obscureText: true,
                                   validator: (value){
                                     if( value!.isEmpty || value.length < 6 ) {
                                       return 'Please must be at least 7 characters long.';
@@ -328,6 +329,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                               // password
                               TextFormField(
                                   key: ValueKey(5),
+                                  obscureText: true,
                                   validator: (value){
                                     if( value!.isEmpty || value.length < 6 ) {
                                       return 'Please must be at least 7 characters long.';
