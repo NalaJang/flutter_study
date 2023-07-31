@@ -232,6 +232,10 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   userName = value!;
                                 },
 
+                                onChanged: (value){
+                                  userName = value;
+                                },
+
                                 decoration: model.textFormDecoration('User name')
                               ),
 
@@ -253,6 +257,10 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     userEmail = value!;
                                   },
 
+                                  onChanged: (value){
+                                    userEmail = value;
+                                  },
+
                                   decoration: model.textFormDecoration('Email')
                               ),
 
@@ -272,6 +280,10 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
 
                                   onSaved: (value){
                                     userPassword = value!;
+                                  },
+
+                                  onChanged: (value){
+                                    userPassword = value;
                                   },
 
                                   decoration: model.textFormDecoration('Password')
