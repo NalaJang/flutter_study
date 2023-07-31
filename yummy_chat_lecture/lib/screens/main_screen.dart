@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yummy_chat_lecture/config/palette.dart';
 import 'package:yummy_chat_lecture/model/model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginSignupScreen extends StatefulWidget {
   const LoginSignupScreen({Key? key}) : super(key: key);
@@ -11,6 +12,8 @@ class LoginSignupScreen extends StatefulWidget {
 
 class _LoginSignupScreenState extends State<LoginSignupScreen> {
 
+  // 사용자의 등록과 인증에 사용할 instance 생성
+  final _authentication = FirebaseAuth.instance;
   Model model = Model();
   bool isSignupScreen = true;
   // 사용자가 submit button 을 클릭했을 때 text field 의 값 유효성 검사를 위한
