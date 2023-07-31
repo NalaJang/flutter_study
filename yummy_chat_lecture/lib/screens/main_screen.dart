@@ -246,6 +246,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                               // email
                               TextFormField(
                                   key: ValueKey(2),
+                                  keyboardType: TextInputType.emailAddress,
                                   validator: (value){
                                     if( value!.isEmpty || value.contains('@') ) {
                                       return 'Please enter a valid email address';
@@ -308,6 +309,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                               // email
                               TextFormField(
                                   key: ValueKey(4),
+                                  keyboardType: TextInputType.emailAddress,
                                   validator: (value){
                                     if( value!.isEmpty || value.contains('@') ) {
                                       return 'Please enter a valid email address';
