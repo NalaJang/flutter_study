@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yummy_chat_lecture/config/palette.dart';
 import 'package:yummy_chat_lecture/model/model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:yummy_chat_lecture/screens/chat_screen.dart';
 
 class LoginSignupScreen extends StatefulWidget {
   const LoginSignupScreen({Key? key}) : super(key: key);
@@ -387,6 +388,15 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                               email: userEmail, password: userPassword
                           );
 
+                          if( newUser.user != null ) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context){
+                                      return ChatScreen();
+                                })
+                            );
+                          }
                         } catch(e) {
                           print(e);
                           ScaffoldMessenger.of(context).showSnackBar(
