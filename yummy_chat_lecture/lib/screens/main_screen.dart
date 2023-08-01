@@ -378,8 +378,27 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                   ),
 
                   child: GestureDetector(
-                    onTap: (){
-                      _tryValidation();
+                    onTap: () async {
+                      if( isSignupScreen ) {
+                        _tryValidation();
+
+                        try {
+                          final newUser = await _authentication.createUserWithEmailAndPassword(
+                              email: userEmail, password: userPassword
+                          );
+
+                        } catch(e) {
+                          print(e);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Please check your email and password'
+                              ),
+                              backgroundColor: Colors.blue,
+                            )
+                          );
+                        }
+                      }
                     },
                     child: Container(
                       decoration: BoxDecoration(
