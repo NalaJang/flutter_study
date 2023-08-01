@@ -325,6 +325,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     userEmail = value!;
                                   },
 
+                                  onChanged: (value){
+                                    userEmail = value;
+                                  },
                                   decoration: model.textFormDecoration('Email')
                               ),
 
@@ -345,6 +348,10 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
 
                                   onSaved: (value){
                                     userPassword = value!;
+                                  },
+
+                                  onChanged: (value){
+                                    userPassword = value;
                                   },
 
                                   decoration: model.textFormDecoration('Password')
@@ -380,6 +387,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
 
                   child: GestureDetector(
                     onTap: () async {
+                      // 사용자가 가입할 때
                       if( isSignupScreen ) {
                         _tryValidation();
 
@@ -408,6 +416,11 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                             )
                           );
                         }
+                      }
+
+                      // 사용자가 로그인을 할 때
+                      if( !isSignupScreen ) {
+                        _tryValidation();
                       }
                     },
                     child: Container(
