@@ -7,7 +7,7 @@ void main() async {
   // flutter core engine 초기화가 필요하다.
   // 따라서 메인 메소드 내에서 비동기 방식으로 ensureInitialized 메소드를 먼저 불러와야 한다.
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
