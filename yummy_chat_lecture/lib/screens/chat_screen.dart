@@ -37,8 +37,21 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Chat screen'),
+        actions: [
+          // 로그아웃 버튼
+          IconButton(
+            onPressed: (){
+              // 로그아웃
+              _authentication.signOut();
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.exit_to_app_sharp,
+              color: Colors.white,
+            )
+          )
+        ],
       ),
-
       body: Center(
         child: Text('Chat screen'),
       ),
