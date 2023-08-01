@@ -421,6 +421,26 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                       // 사용자가 로그인을 할 때
                       if( !isSignupScreen ) {
                         _tryValidation();
+
+                        try {
+                          final newUser = await _authentication
+                              .signInWithEmailAndPassword(
+                              email: userEmail, password: userPassword
+                          );
+
+                          if (newUser.user != null) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) {
+                                      return ChatScreen();
+                                    })
+                            );
+                          }
+
+                        } catch(e) {
+                          print(e);
+                        }
                       }
                     },
                     child: Container(
