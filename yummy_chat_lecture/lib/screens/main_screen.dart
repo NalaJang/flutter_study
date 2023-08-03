@@ -4,6 +4,9 @@ import 'package:yummy_chat_lecture/model/model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:yummy_chat_lecture/screens/chat_screen.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+// 기본적인 인증 관리는 firebase_auth 패키지가 담당하지만
+// user id 정보 같은 것은 엑스트라 데이터로써 cloud_firestore 가 담당한다.
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LoginSignupScreen extends StatefulWidget {
   const LoginSignupScreen({Key? key}) : super(key: key);
@@ -405,6 +408,16 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                             final newUser = await _authentication.createUserWithEmailAndPassword(
                                 email: userEmail, password: userPassword
                             );
+
+                            FirebaseFirestore.instance
+                                .collection('user')
+                                .doc(newUser.user!.uid)
+                                .set({
+                              // 데이터의 형식은 항상 map 의 형태를 취한다.
+                              // key : value
+                              'userName' : userName,
+                              'email' : userEmail
+                            });
 
                             if( newUser.user != null ) {
                               Navigator.push(
