@@ -44,7 +44,12 @@ class _ChatScreenState extends State<ChatScreen> {
             onPressed: (){
               // 로그아웃
               _authentication.signOut();
-              Navigator.pop(context);
+              // firebase_auth 패키지가 사용자가 발급받았던 토큰을 삭제함으로써
+              // authentication state 가 바뀌는 이벤트를
+              // main.dart 의 authStateChange stream 에 전달한다.
+              // 따라서 더 이상 snapshot 이 토큰을 가지고 있지 않게 됨으로
+              // Login 페이지로 이동하게 되기 때문에 pop 메소드 주석
+              // Navigator.pop(context);
             },
             icon: Icon(
               Icons.exit_to_app_sharp,
