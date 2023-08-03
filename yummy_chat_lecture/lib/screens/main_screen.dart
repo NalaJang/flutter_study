@@ -409,7 +409,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 email: userEmail, password: userPassword
                             );
 
-                            FirebaseFirestore.instance
+                            // set 메서드는 Future 를 return 하기 때문에 await 키워드를 붙인다.
+                            await FirebaseFirestore.instance
                                 .collection('user')
                                 .doc(newUser.user!.uid)
                                 .set({
