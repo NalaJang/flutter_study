@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:yummy_chat_lecture/chatting/chat/message.dart'; // 모든 스트림의 과정을 관리하는 패키지
+import 'package:yummy_chat_lecture/chatting/chat/message.dart';
+import 'package:yummy_chat_lecture/chatting/chat/new_message.dart'; // 모든 스트림의 과정을 관리하는 패키지
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);
@@ -67,6 +68,7 @@ class _ChatScreenState extends State<ChatScreen> {
             Expanded(
               child: Messages()
             ),
+            NewMessage(),
           ],
         ),
       )
