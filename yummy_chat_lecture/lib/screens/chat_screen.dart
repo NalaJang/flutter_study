@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart'; // 모든 스트림의 과정을 관리하는 패키지
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:yummy_chat_lecture/chatting/chat/message.dart'; // 모든 스트림의 과정을 관리하는 패키지
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);
@@ -58,34 +59,17 @@ class _ChatScreenState extends State<ChatScreen> {
           )
         ],
       ),
-      body: StreamBuilder(
-        stream: FirebaseFirestore.instance
-            .collection('chats/fdHhcNf5ovXtvfBwcoyV/message')
-            .snapshots(),
-        builder: (BuildContext context,
-            AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
-
-          // 데이터를 가져오는 동안은 null error 가 뜨기 때문에 그 사이에는 화면에 로딩 이미지를 띄워준다.
-          if( snapshot.connectionState == ConnectionState.waiting ) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-
-          final docs = snapshot.data!.docs;
-          return ListView.builder(
-            itemCount: docs.length,
-            itemBuilder: (context, index) {
-              return Container(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  docs[index]['text']
-                ),
-              );
-            }
-          );
-        },
-      ),
+      body: Container(
+        child: Column(
+          children: [
+            // column widget 내의 리스트 뷰가 무조건 화면 내의 모든 공간을 확보하면서 에러가 발생하기 때문에
+            // Expanded widget 으로 감싼 뒤 Messages class 를 불러와야 한다.
+            Expanded(
+              child: Messages()
+            ),
+          ],
+        ),
+      )
     );
   }
 }
