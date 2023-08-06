@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:yummy_chat_lecture/chatting/chat/chat_bubble.dart';
 
 class Messages extends StatelessWidget {
   const Messages({Key? key}) : super(key: key);
@@ -28,7 +29,7 @@ class Messages extends StatelessWidget {
           itemCount: chatDocs.length,
           itemBuilder: (context, index) {
             // 화면에 메시지 보여주기(메시지 리스트 렌더링)
-            return Text(chatDocs[index]['text']);
+            return ChatBubble(chatDocs[index]['text']);
           },
         );
       },
