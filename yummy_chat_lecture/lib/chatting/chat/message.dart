@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:yummy_chat_lecture/chatting/chat/chat_bubble.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Messages extends StatelessWidget {
   const Messages({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    
+    final user = FirebaseAuth.instance.currentUser;
+
     // 채팅 메시지를 구독하고 있다가 보여줘야 하므로 StreamBuilder widget 사용
     return StreamBuilder(
       stream: FirebaseFirestore.instance
@@ -29,7 +33,10 @@ class Messages extends StatelessWidget {
           itemCount: chatDocs.length,
           itemBuilder: (context, index) {
             // 화면에 메시지 보여주기(메시지 리스트 렌더링)
-            return ChatBubble(chatDocs[index]['text']);
+            return ChatBubble(
+                chatDocs[index]['text'],
+                chatDocs[index]['userID'].toString() == user!.uid
+            );
           },
         );
       },
