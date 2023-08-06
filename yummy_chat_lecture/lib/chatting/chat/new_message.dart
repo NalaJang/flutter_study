@@ -36,6 +36,8 @@ class _NewMessageState extends State<NewMessage> {
           // TextField 도 Expanded widget 으로 감싸준다.
           Expanded(
             child: TextField(
+              // 장문의 메시지를 입력하면 자동으로 줄바꿈
+              maxLength: null,
               controller: _controller,
               decoration: InputDecoration(
                 labelText: 'Send a message...'
