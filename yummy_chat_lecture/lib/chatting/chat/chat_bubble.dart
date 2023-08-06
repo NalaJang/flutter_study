@@ -17,34 +17,40 @@ class ChatBubbles extends StatelessWidget {
 
       children: [
         if( isMe )
-          ChatBubble(
-            clipper: ChatBubbleClipper8(type: BubbleType.sendBubble),
-            alignment: Alignment.topRight,
-            margin: EdgeInsets.only(top: 20),
-            backGroundColor: Colors.blue,
-            child: Container(
-              constraints: BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width * 0.7,
-              ),
-              child: Text(
-                message,
-                style: TextStyle(color: Colors.white),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0,0,5,0),
+            child: ChatBubble(
+              clipper: ChatBubbleClipper8(type: BubbleType.sendBubble),
+              alignment: Alignment.topRight,
+              margin: EdgeInsets.only(top: 20),
+              backGroundColor: Colors.blue,
+              child: Container(
+                constraints: BoxConstraints(
+                  maxWidth: MediaQuery.of(context).size.width * 0.7,
+                ),
+                child: Text(
+                  message,
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ),
           ),
 
         if( !isMe )
-          ChatBubble(
-            clipper: ChatBubbleClipper8(type: BubbleType.receiverBubble),
-            backGroundColor: Color(0xffE7E7ED),
-            margin: EdgeInsets.only(top: 20),
-            child: Container(
-              constraints: BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width * 0.7,
-              ),
-              child: Text(
-                message,
-                style: TextStyle(color: Colors.black),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(5,0,0,0),
+            child: ChatBubble(
+              clipper: ChatBubbleClipper8(type: BubbleType.receiverBubble),
+              backGroundColor: Color(0xffE7E7ED),
+              margin: EdgeInsets.only(top: 20),
+              child: Container(
+                constraints: BoxConstraints(
+                  maxWidth: MediaQuery.of(context).size.width * 0.7,
+                ),
+                child: Text(
+                  message,
+                  style: TextStyle(color: Colors.black),
+                ),
               ),
             ),
           )
