@@ -20,6 +20,8 @@ class Messages extends StatelessWidget {
         final chatDocs = snapshot.data!.docs;
         // 데이터가 전달되었을 때,
         return ListView.builder(
+          // 메시지의 순서가 아래부터 위로 쌓여져 가도록 함
+          reverse: true,
           itemCount: chatDocs.length,
           itemBuilder: (context, index) {
             // 화면에 메시지 보여주기(메시지 리스트 렌더링)
