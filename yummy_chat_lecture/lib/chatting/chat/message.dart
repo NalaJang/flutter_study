@@ -33,7 +33,7 @@ class Messages extends StatelessWidget {
           itemCount: chatDocs.length,
           itemBuilder: (context, index) {
             // 화면에 메시지 보여주기(메시지 리스트 렌더링)
-            return ChatBubble(
+            return ChatBubbles(
                 chatDocs[index]['text'],
                 chatDocs[index]['userID'].toString() == user!.uid
             );
