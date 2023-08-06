@@ -12,7 +12,7 @@ class ChatBubble extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: isMe ? Colors.grey[300] : Colors.blue,
             borderRadius: BorderRadius.circular(12)
           ),
             width: 145,
@@ -21,7 +21,7 @@ class ChatBubble extends StatelessWidget {
           child: Text(
             message,
             style: TextStyle(
-              color: Colors.white
+              color: isMe ? Colors.black : Colors.white
             ),
           ),
         ),
