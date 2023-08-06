@@ -37,7 +37,7 @@ class _NewMessageState extends State<NewMessage> {
           Expanded(
             child: TextField(
               // 장문의 메시지를 입력하면 자동으로 줄바꿈
-              maxLength: null,
+              maxLines: null,
               controller: _controller,
               decoration: InputDecoration(
                 labelText: 'Send a message...'
