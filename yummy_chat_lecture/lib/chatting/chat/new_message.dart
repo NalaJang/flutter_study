@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class NewMessage extends StatefulWidget {
   const NewMessage({Key? key}) : super(key: key);
@@ -10,6 +11,14 @@ class NewMessage extends StatefulWidget {
 class _NewMessageState extends State<NewMessage> {
 
   var _userEnterMessage = '';
+
+  void _sendMessage() {
+    FocusScope.of(context).unfocus();
+    
+    FirebaseFirestore.instance.collection('chat').add({
+      'text' : _userEnterMessage
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +43,10 @@ class _NewMessageState extends State<NewMessage> {
             ),
           ),
           IconButton(
-            onPressed: _userEnterMessage.trim().isEmpty ? null : (){},
+            // 메서드 뒤에 괄호가 붙는 경우: 해당 메서드가 실행된 후 메서드의 값이 리턴된다는 의미
+            // _sendMessage 처럼 괄호없이 메서드 이름만 쓰는 경우: onPressed 메서드가 해당 메서드의 위치를 참조할 수 있다는 의미
+            // 즉, onPressed 매개 변수에 _sendMessage 메서드 대한 포인터(참조)를 전달한다는 의
+            onPressed: _userEnterMessage.trim().isEmpty ? null : _sendMessage,
             icon: Icon(Icons.send),
             color: Colors.blue,
           )
