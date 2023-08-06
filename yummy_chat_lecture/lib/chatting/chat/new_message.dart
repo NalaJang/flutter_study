@@ -10,6 +10,7 @@ class NewMessage extends StatefulWidget {
 
 class _NewMessageState extends State<NewMessage> {
 
+  final _controller = TextEditingController();
   var _userEnterMessage = '';
 
   void _sendMessage() {
@@ -18,6 +19,7 @@ class _NewMessageState extends State<NewMessage> {
     FirebaseFirestore.instance.collection('chat').add({
       'text' : _userEnterMessage
     });
+    _controller.clear();
   }
 
   @override
@@ -30,6 +32,7 @@ class _NewMessageState extends State<NewMessage> {
           // TextField 도 Expanded widget 으로 감싸준다.
           Expanded(
             child: TextField(
+              controller: _controller,
               decoration: InputDecoration(
                 labelText: 'Send a message...'
               ),
