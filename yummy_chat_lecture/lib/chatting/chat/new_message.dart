@@ -14,14 +14,18 @@ class _NewMessageState extends State<NewMessage> {
   final _controller = TextEditingController();
   var _userEnterMessage = '';
 
-  void _sendMessage() {
+  void _sendMessage() async {
     FocusScope.of(context).unfocus();
     final user = FirebaseAuth.instance.currentUser;
-    
+    final userData = await FirebaseFirestore.instance.collection('user').doc(user!.uid).get();
+
     FirebaseFirestore.instance.collection('chat').add({
       'text' : _userEnterMessage,
       'time' : Timestamp.now(),
-      'userID' : user!.uid
+      'userID' : user!.uid,
+      // userData 를 가져오기 위한 get 메서드가 future 값을 리턴하므로
+      // async 와 await 키워드를 입력해야 data 메서드를 사용할 수 있다.
+      'userName' : userData.data()!['userName']
     });
     _controller.clear();
   }

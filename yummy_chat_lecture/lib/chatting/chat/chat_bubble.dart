@@ -4,9 +4,10 @@ import 'package:flutter_chat_bubble/chat_bubble.dart';
 import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_8.dart';
 
 class ChatBubbles extends StatelessWidget {
-  const ChatBubbles(this.message, this.isMe, {Key? key}) : super(key: key);
+  const ChatBubbles(this.message, this.userName, this.isMe, {Key? key}) : super(key: key);
 
   final String message;
+  final String userName;
   final bool isMe;
 
   @override
@@ -28,9 +29,22 @@ class ChatBubbles extends StatelessWidget {
                 constraints: BoxConstraints(
                   maxWidth: MediaQuery.of(context).size.width * 0.7,
                 ),
-                child: Text(
-                  message,
-                  style: TextStyle(color: Colors.white),
+
+                child: Column(
+                  children: [
+                    Text(
+                      userName,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white
+                      ),
+                    ),
+
+                    Text(
+                      message,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ],
                 ),
               ),
             ),
