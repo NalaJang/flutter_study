@@ -17,6 +17,7 @@ class ChatBubbles extends StatelessWidget {
       mainAxisAlignment: isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
 
       children: [
+        // 내가 보낸 메시지
         if( isMe )
           Padding(
             padding: const EdgeInsets.fromLTRB(0,0,5,0),
@@ -31,7 +32,11 @@ class ChatBubbles extends StatelessWidget {
                 ),
 
                 child: Column(
+                  // 이름 정렬
+                  crossAxisAlignment: isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+
                   children: [
+                    // 사용자 이름
                     Text(
                       userName,
                       style: TextStyle(
@@ -40,6 +45,7 @@ class ChatBubbles extends StatelessWidget {
                       ),
                     ),
 
+                    // 사용자 메시지
                     Text(
                       message,
                       style: TextStyle(color: Colors.white),
@@ -50,6 +56,7 @@ class ChatBubbles extends StatelessWidget {
             ),
           ),
 
+        // 상대가 보낸 메시지
         if( !isMe )
           Padding(
             padding: const EdgeInsets.fromLTRB(5,0,0,0),
@@ -61,9 +68,27 @@ class ChatBubbles extends StatelessWidget {
                 constraints: BoxConstraints(
                   maxWidth: MediaQuery.of(context).size.width * 0.7,
                 ),
-                child: Text(
-                  message,
-                  style: TextStyle(color: Colors.black),
+
+                child: Column(
+                  // 이름 정렬
+                  crossAxisAlignment: isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+
+                  children: [
+                    // 사용자 이름
+                    Text(
+                      userName,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black
+                      ),
+                    ),
+
+                    // 사용자 메시지
+                    Text(
+                      message,
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ],
                 ),
               ),
             ),
