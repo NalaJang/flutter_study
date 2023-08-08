@@ -42,6 +42,52 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
     }
   }
 
+  void showAlert(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context){
+          return Dialog(
+            backgroundColor: Colors.white,
+            // 팝업 창 크기
+            child: Container(
+              padding: EdgeInsets.only(top: 10),
+              width: 150,
+              height: 300,
+
+              child: Column(
+                children: [
+                  CircleAvatar(
+                    radius: 40,
+                    backgroundColor: Colors.blue,
+                  ),
+
+                  SizedBox(height: 10,),
+
+                  // 이미지 추가
+                  OutlinedButton.icon(
+                    onPressed: (){},
+                    icon: Icon(Icons.image),
+                    label: Text('Add icon')
+                  ),
+
+                  SizedBox(height: 80),
+
+                  // 닫기
+                  TextButton.icon(
+                    onPressed: (){
+                      Navigator.pop(context)
+                    },
+                    icon: Icon(Icons.close),
+                    label: Text('Close')
+                  )
+                ],
+              ),
+            ),
+          );
+        }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -211,9 +257,14 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                         width: 15,
                                       ),
 
-                                      Icon(
-                                        Icons.image,
-                                        color: isSignupScreen ? Colors.cyan : Colors.grey[300],
+                                      GestureDetector(
+                                        onTap: (){
+                                          showAlert(context);
+                                        },
+                                        child: Icon(
+                                          Icons.image,
+                                          color: isSignupScreen ? Colors.cyan : Colors.grey[300],
+                                        ),
                                       )
                                     ],
                                   ),
