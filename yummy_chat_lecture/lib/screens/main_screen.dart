@@ -479,6 +479,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                             // putFile() 가 UploadTask 를 반환하기 때문에 await 를 붙여주었다.
                             await refImage.putFile(userPickedImage!);
 
+                            final url = await refImage.getDownloadURL();
+
                             // set 메서드는 Future 를 return 하기 때문에 await 키워드를 붙인다.
                             await FirebaseFirestore.instance
                                 .collection('user')
@@ -487,7 +489,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                               // 데이터의 형식은 항상 map 의 형태를 취한다.
                               // key : value
                               'userName' : userName,
-                              'email' : userEmail
+                              'email' : userEmail,
+                              'picked_image' : url
                             });
 
                             if( newUser.user != null ) {
