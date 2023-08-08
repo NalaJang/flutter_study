@@ -447,6 +447,22 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
 
                         // 사용자가 가입할 때
                         if( isSignupScreen ) {
+                          if( userPickedImage == null ) {
+                            setState(() {
+                              showSpinner = false;
+                            });
+
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                      'Please pick your image'
+                                  ),
+                                  backgroundColor: Colors.blue,
+                                )
+                            );
+                            // return 함으로써 이미지를 선택하지 않았을 경우, 다음 진행을 멈추게 한다.
+                            return;
+                          }
                           _tryValidation();
 
                           try {
