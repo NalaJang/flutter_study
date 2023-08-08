@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:yummy_chat_lecture/add_image/add_image.dart';
 import 'package:yummy_chat_lecture/config/palette.dart';
@@ -469,6 +470,14 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                             final newUser = await _authentication.createUserWithEmailAndPassword(
                                 email: userEmail, password: userPassword
                             );
+
+                            final refImage = FirebaseStorage.instance
+                            .ref() // storage 의 이미지 경로를 참조할 수 있게 해주는 메소드
+                            .child('picked_image') // 폴더 이름
+                            .child(newUser.user!.uid + '.png'); // 이미지 이름
+
+                            // putFile() 가 UploadTask 를 반환하기 때문에 await 를 붙여주었다.
+                            await refImage.putFile(userPickedImage!);
 
                             // set 메서드는 Future 를 return 하기 때문에 await 키워드를 붙인다.
                             await FirebaseFirestore.instance
