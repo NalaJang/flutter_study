@@ -497,14 +497,17 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                             }
                           } catch(e) {
                             print(e);
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Please check your email and password'
-                                ),
-                                backgroundColor: Colors.blue,
-                              )
-                            );
+                            // ScaffoldMessenger.of() error 를 없애기 위해 위젯이 mount 되었나를 확인하게 했다.
+                            if( mounted ) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                        'Please check your email and password'
+                                    ),
+                                    backgroundColor: Colors.blue,
+                                  )
+                              );
+                            }
                           }
                         }
 
