@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:yummy_chat_lecture/add_image/add_image.dart';
 import 'package:yummy_chat_lecture/config/palette.dart';
@@ -32,6 +34,13 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
   String userEmail = '';
   String userPassword = '';
 
+  File? userPickedImage;
+
+  void pickedImage(File image) {
+    // AddImage 에서 선택된 유저 이미지 가져오기
+    userPickedImage = image;
+  }
+
   // _formKey 를 사용해서 밸리데이션 기능 실행
   void _tryValidation() {
     // 현재 값에 대한 유효성 검사를 하는 것이므로 currentState 에 대해 null check 를 한다.
@@ -49,7 +58,11 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
         builder: (context){
           return Dialog(
             backgroundColor: Colors.white,
-            child: AddImage(),
+
+            // pickedImage 메서드 뒤에 괄호를 붙이지 않은 이유:
+            // 메서드를 호출해서 실행시키는 것이 아니라 메서드의 위치 포인터만을 전달하기 때문
+            // 즉, pickedImage 에는 메서드의 위치만 저장되어 있다.
+            child: AddImage(pickedImage),
           );
         }
     );
