@@ -25,7 +25,8 @@ class _NewMessageState extends State<NewMessage> {
       'userID' : user!.uid,
       // userData 를 가져오기 위한 get 메서드가 future 값을 리턴하므로
       // async 와 await 키워드를 입력해야 data 메서드를 사용할 수 있다.
-      'userName' : userData.data()!['userName']
+      'userName' : userData.data()!['userName'],
+      'userImage' : userData['picked_image']
     });
     _controller.clear();
   }
