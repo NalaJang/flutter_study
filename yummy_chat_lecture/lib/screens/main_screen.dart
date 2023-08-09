@@ -11,6 +11,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 // 기본적인 인증 관리는 firebase_auth 패키지가 담당하지만
 // user id 정보 같은 것은 엑스트라 데이터로써 cloud_firestore 가 담당한다.
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:yummy_chat_lecture/screens/main_screen/main_background.dart';
 
 class LoginSignupScreen extends StatefulWidget {
   const LoginSignupScreen({Key? key}) : super(key: key);
@@ -21,6 +22,7 @@ class LoginSignupScreen extends StatefulWidget {
 
 class _LoginSignupScreenState extends State<LoginSignupScreen> {
 
+  var mainBackground = MainBackground();
   // 사용자의 등록과 인증에 사용할 instance 생성
   final _authentication = FirebaseAuth.instance;
   Model model = Model();
@@ -85,66 +87,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
             children: [
 
               // 배경
-              Positioned(
-                top: 0,
-                right: 0,
-                left: 0,
-                child: Container(
-                  height: 300.0,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('image/red.jpg'),
-                      fit: BoxFit.fill
-                    ),
-                  ),
-
-                  child: Container(
-                    padding: const EdgeInsets.only(top: 90, left: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        RichText(
-                          text: TextSpan(
-                            text: 'Welcome',
-                            style: const TextStyle(
-                              letterSpacing: 1.0,
-                              fontSize: 25,
-                              color: Colors.white
-                            ),
-
-                            children: [
-                              TextSpan(
-                                text: isSignupScreen ?
-                                ' to Yummy chat!' : ' back',
-
-                                style: const TextStyle(
-                                  letterSpacing: 1.0,
-                                  fontSize: 25,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 5.0,
-                        ),
-
-                        Text(
-                          isSignupScreen ?
-                          'Signup to continue' : 'SignIn to continue',
-
-                          style: const TextStyle(
-                              letterSpacing: 1.0,
-                              color: Colors.white
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                )
-              ),
+              mainBackground.background(isSignupScreen),
 
               // text form field
               AnimatedPositioned(
