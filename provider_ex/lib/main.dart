@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_ex/fish_model.dart';
+import 'package:provider_ex/seafish_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,13 +12,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      // create 메서드를 통해 FishModel class 를 리턴해주면
-      // child 에 있는 MaterialApp 아래 모든 위젯에서
-      // FishModel 인스턴스에 접근이 가능하다.
-      create: (context) => FishModel(name: 'Salmon', number: 10, size: 'big'),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          // create 메서드를 통해 FishModel class 를 리턴해주면
+          // child 에 있는 MaterialApp 아래 모든 위젯에서
+          // FishModel 인스턴스에 접근이 가능하다.
+          create: (context) =>
+              FishModel(name: 'Salmon', number: 10, size: 'big')
+        ),
+
+        ChangeNotifierProvider(
+          create: (context) =>
+              SeaFishModel(name: 'Tuna', tunaNumber: 0, size: 'middle')
+        ),
+      ],
       child: MaterialApp(
-        home: FishOrder(),
+          home: FishOrder(),
       ),
     );
   }
