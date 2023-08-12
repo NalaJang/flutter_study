@@ -192,7 +192,7 @@ class SpicyC extends StatelessWidget {
 
         ElevatedButton(
           onPressed: (){
-            Provider.of<FishModel>(context).changeFishNumber();
+            Provider.of<FishModel>(context, listen: false).changeFishNumber();
           },
           child: Text('Change fish number')
         )
