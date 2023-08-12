@@ -139,7 +139,7 @@ class SpicyB extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'Fish number: ${Provider.of<FishModel>(context).number}',
+          'Tuna number: ${Provider.of<SeaFishModel>(context).tunaNumber}',
           style: TextStyle(
               fontSize: 16, color: Colors.red
           ),
@@ -153,7 +153,14 @@ class SpicyB extends StatelessWidget {
 
         SizedBox(height: 20,),
 
-        Low()
+        Low(),
+
+        ElevatedButton(
+          onPressed: (){
+            Provider.of<SeaFishModel>(context, listen: false).changeSeaFishNumber();
+          },
+          child: Text('Sea fish number')
+        )
       ],
     );
   }
