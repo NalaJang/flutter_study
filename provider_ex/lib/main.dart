@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Provider(
+    return ChangeNotifierProvider(
       // create 메서드를 통해 FishModel class 를 리턴해주면
       // child 에 있는 MaterialApp 아래 모든 위젯에서
       // FishModel 인스턴스에 접근이 가능하다.
@@ -189,6 +189,13 @@ class SpicyC extends StatelessWidget {
         ),
 
         SizedBox(height: 20,),
+
+        ElevatedButton(
+          onPressed: (){
+            Provider.of<FishModel>(context).changeFishNumber();
+          },
+          child: Text('Change fish number')
+        )
       ],
     );
   }
