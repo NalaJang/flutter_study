@@ -139,13 +139,13 @@ class SpicyB extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'Fish number',
+          'Fish number: ${Provider.of<FishModel>(context).number}',
           style: TextStyle(
               fontSize: 16, color: Colors.red
           ),
         ),
         Text(
-          'Fish size',
+          'Fish size: ${Provider.of<FishModel>(context).size}',
           style: TextStyle(
               fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold
           ),
