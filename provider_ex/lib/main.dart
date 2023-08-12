@@ -153,14 +153,16 @@ class SpicyB extends StatelessWidget {
 
         SizedBox(height: 20,),
 
-        Low(),
-
         ElevatedButton(
           onPressed: (){
             Provider.of<SeaFishModel>(context, listen: false).changeSeaFishNumber();
           },
           child: Text('Sea fish number')
-        )
+        ),
+
+        SizedBox(height: 20,),
+
+        Low(),
       ],
     );
   }
