@@ -115,10 +115,20 @@ class _LoginPageState extends State<LoginPage> {
 
             SizedBox(height: 25,),
 
+            // 회원가입 버튼
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(notAMember),
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignupPage())
+                    );
+                  },
+                ),
+
                 Text(
                   registerNow,
                   style: TextStyle(
