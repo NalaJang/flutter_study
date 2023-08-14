@@ -121,14 +121,16 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(notAMember),
-                GestureDetector(
-                  onTap: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignupPage())
-                    );
-                  },
-                ),
+                // RenderPointerListener object was given an infinite size during layout.
+                // -> error 가 계속 나서 우선 GestureDetector() 주석 처리
+                // GestureDetector(
+                //   onTap: (){
+                //     Navigator.push(
+                //       context,
+                //       MaterialPageRoute(builder: (context) => SignupPage())
+                //     );
+                //   },
+                // ),
 
                 Text(
                   registerNow,
