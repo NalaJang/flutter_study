@@ -90,6 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                     onChanged: (value){
                       userPassword = value;
                     },
+                    obscureText: true,
                     decoration: InputDecoration(
                         border: InputBorder.none, hintText: 'Password'
                     ),
