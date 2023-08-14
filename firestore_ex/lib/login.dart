@@ -16,6 +16,9 @@ class _LoginPageState extends State<LoginPage> {
   final notAMember = 'Not a member?';
   final registerNow = ' Register Now!';
 
+  String userEmail = '';
+  String userPassword = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,9 +58,12 @@ class _LoginPageState extends State<LoginPage> {
                   borderRadius: BorderRadius.circular(12)
                 ),
 
-                child: const Padding(
-                  padding: EdgeInsets.only(left: 20.0),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
                   child: TextField(
+                    onChanged: (value){
+                      userEmail = value;
+                    },
                     decoration: InputDecoration(
                       border: InputBorder.none, hintText: 'Email'
                     ),
