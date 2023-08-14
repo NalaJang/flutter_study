@@ -105,20 +105,25 @@ class _LoginPageState extends State<LoginPage> {
             Container(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Container(
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(12)
-                  ),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push((context), MaterialPageRoute(builder: (context) => SignupPage()));
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(12)
+                    ),
 
-                  child: Center(
-                    child: Text(
-                      signIn,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold
+                    child: Center(
+                      child: Text(
+                        signIn,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold
+                        ),
                       ),
                     ),
                   ),
