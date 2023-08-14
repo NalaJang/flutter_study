@@ -1,6 +1,8 @@
 import 'package:firestore_ex/signup.dart';
 import 'package:flutter/material.dart';
 
+import 'firestore_page.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -107,8 +109,9 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push((context), MaterialPageRoute(builder: (context) => SignupPage()));
+                    Navigator.push((context), MaterialPageRoute(builder: (context) => FirestorePage()));
                   },
+
                   child: Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
