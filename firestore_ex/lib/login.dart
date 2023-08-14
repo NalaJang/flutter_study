@@ -102,22 +102,24 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 10,),
 
             // 로그인 버튼
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Container(
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(12)
-                ),
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Container(
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(12)
+                  ),
 
-                child: Center(
-                  child: Text(
-                    signIn,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold
+                  child: Center(
+                    child: Text(
+                      signIn,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold
+                      ),
                     ),
                   ),
                 ),
