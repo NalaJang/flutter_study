@@ -84,9 +84,12 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.circular(12)
                 ),
 
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.only(left: 20.0),
                   child: TextField(
+                    onChanged: (value){
+                      userPassword = value;
+                    },
                     decoration: InputDecoration(
                         border: InputBorder.none, hintText: 'Password'
                     ),
