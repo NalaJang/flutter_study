@@ -1,6 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firestore_ex/signup.dart';
 import 'package:flutter/material.dart';
-
 import 'firestore_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -12,12 +12,14 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
 
+  final _authentication = FirebaseAuth.instance;
   final hello = 'Hello';
   final welcomeBack = 'Welcome back';
   final signIn = 'Sign in';
   final notAMember = 'Not a member?';
   final registerNow = ' Register Now!';
 
+  bool showSpinner = false;
   String userEmail = '';
   String userPassword = '';
 
