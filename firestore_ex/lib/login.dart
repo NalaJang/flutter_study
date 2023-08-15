@@ -131,7 +131,10 @@ class _LoginPageState extends State<LoginPage> {
                                 );
 
                             if( newUser.user != null ) {
-                              Navigator.push((context), MaterialPageRoute(builder: (context) => FirestorePage()));
+                                Navigator.push((context), MaterialPageRoute(
+                                    builder: (context) => FireStorePage()
+                                )
+                              );
                             }
 
                             setState(() {

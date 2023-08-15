@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class FirestorePage extends StatefulWidget {
-  const FirestorePage({Key? key}) : super(key: key);
+class FireStorePage extends StatefulWidget {
+  const FireStorePage({Key? key}) : super(key: key);
 
   @override
-  State<FirestorePage> createState() => _FirestorePageState();
+  State<FireStorePage> createState() => _FireStorePageState();
 }
 
-class _FirestorePageState extends State<FirestorePage> {
+class _FireStorePageState extends State<FireStorePage> {
   @override
   Widget build(BuildContext context) {
     return const Placeholder(
