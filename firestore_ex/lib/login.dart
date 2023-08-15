@@ -120,7 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: GestureDetector(
                         onTap: () async {
                           setState(() {
-                            CircularProgressIndicator();
+                            showSpinner = true;
                           });
 
                           try {
@@ -133,6 +133,10 @@ class _LoginPageState extends State<LoginPage> {
                             if( newUser.user != null ) {
                               Navigator.push((context), MaterialPageRoute(builder: (context) => FirestorePage()));
                             }
+
+                            setState(() {
+                              showSpinner = false;
+                            });
                           } catch(e) {
                             print(e);
                           }
@@ -167,22 +171,20 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(notAMember),
-                      // RenderPointerListener object was given an infinite size during layout.
-                      // -> error 가 계속 나서 우선 GestureDetector() 주석 처리
-                      // GestureDetector(
-                      //   onTap: (){
-                      //     Navigator.push(
-                      //       context,
-                      //       MaterialPageRoute(builder: (context) => SignupPage())
-                      //     );
-                      //   },
-                      // ),
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SignupPage())
+                          );
+                        },
 
-                      Text(
-                        registerNow,
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold
+                        child: Text(
+                          registerNow,
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold
+                          ),
                         ),
                       )
                     ],
