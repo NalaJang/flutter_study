@@ -14,6 +14,83 @@ class _FireStorePageState extends State<FireStorePage> {
   // 이를 통해 컬렉션에 접근
   CollectionReference product = FirebaseFirestore.instance.collection('items');
 
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController priceController = TextEditingController();
+
+  // 비동기 방식이므로 void
+  Future<void> _update(DocumentSnapshot documentSnapshot) async {
+    // 현재의 데이터 값이 담겨있다.
+    nameController.text = documentSnapshot['name'];
+    priceController.text = documentSnapshot['price'];
+
+    await showModalBottomSheet(
+      // isScrollControlled: 기본 높이 조절
+      isScrollControlled: true,
+      context: context,
+      builder: (BuildContext context){
+          return SizedBox(
+            child: Padding(
+              padding: EdgeInsets.only(
+                top: 20,
+                left: 20,
+                right: 20,
+                // MediaQuery : 키보드에 반응하는 위젯을 만들기 위함
+                // viewInsets.bottom : 키보드가 올라왔을 때 키보드 위에 창이 위치한다.
+                bottom: MediaQuery.of(context).viewInsets.bottom
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+
+                  TextField(
+                    // 변한 데이터 값이 담긴다
+                    controller: nameController,
+                    decoration: InputDecoration(
+                      labelText: 'Name'
+                    ),
+                  ),
+
+                  TextField(
+                    // 변한 데이터 값이 담긴다
+                    controller: priceController,
+                    keyboardType: TextInputType.numberWithOptions(decimal: true),
+                    decoration: InputDecoration(
+                        labelText: 'Price'
+                    ),
+                  ),
+
+                  SizedBox(height: 20,),
+
+                  ElevatedButton(
+                    onPressed: () async {
+
+                      // 변한 데이터 값을 두 변수에 담긴다.
+                      final String name = nameController.text;
+                      final String price = priceController.text;
+                      
+                      product
+                          // 정확한 row 를 지정해주고
+                          .doc(documentSnapshot.id)
+                          // 필드를 지정해준다.(변한 값은 최종적으로 update()에 전달된다.
+                          .update({"name":name, "price":price});
+
+                      nameController.text = "";
+                      priceController.text = "";
+
+                      // 업데이트 작업이 끝난 후 showModalBottomSheet 사라지도록.
+                      Navigator.of(context).pop();
+                    },
+                    child: Text('Update')
+                  )
+                ],
+              ),
+            ),
+          );
+        }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +123,9 @@ class _FireStorePageState extends State<FireStorePage> {
                       child: Row(
                         children: [
                           IconButton(
-                            onPressed: (){},
+                            onPressed: (){
+                              _update(documentSnapshot);
+                            },
                             icon: Icon(Icons.edit),
                           )
                         ],
