@@ -37,6 +37,7 @@ class _FireStorePageState extends State<FireStorePage> {
                 final DocumentSnapshot documentSnapshot = streamSnapshot.data!.docs[index];
 
                 return Card(
+                  margin: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                   child: ListTile(
                     title: Text(documentSnapshot['name']),
                     subtitle: Text(documentSnapshot['price']),
@@ -46,7 +47,7 @@ class _FireStorePageState extends State<FireStorePage> {
               }
             );
           }
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator());
         },
       ),
     );
