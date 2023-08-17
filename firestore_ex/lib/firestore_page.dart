@@ -161,6 +161,8 @@ class _FireStorePageState extends State<FireStorePage> {
 
   Future<void> _delete(String productId) async {
     await product.doc(productId).delete();
+
+    Navigator.of(context).pop();
   }
 
   @override
@@ -205,7 +207,38 @@ class _FireStorePageState extends State<FireStorePage> {
                           // 아이템 삭제
                           IconButton(
                             onPressed: (){
-                              _delete(documentSnapshot.id);
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: Text(
+                                      '아이템 삭제',
+                                      style: TextStyle(
+                                        fontSize: 14.0
+                                      ),
+                                    ),
+
+                                    content: Text('해당 아이템을 정말로 삭제하시겠습니까?'),
+
+                                    actions: [
+                                      ElevatedButton(
+                                        onPressed: (){
+                                          _delete(documentSnapshot.id);
+                                        },
+                                        child: Text('삭제')
+                                      ),
+
+                                      ElevatedButton(
+                                          onPressed: (){
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text('아니오')
+                                      ),
+                                    ],
+                                  );
+                                }
+                              );
+                              // _delete(documentSnapshot.id);
                             },
                             icon: Icon(Icons.delete),
                           )
