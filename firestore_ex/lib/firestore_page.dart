@@ -41,6 +41,17 @@ class _FireStorePageState extends State<FireStorePage> {
                   child: ListTile(
                     title: Text(documentSnapshot['name']),
                     subtitle: Text(documentSnapshot['price']),
+                    trailing: SizedBox(
+                      width: 100,
+                      child: Row(
+                        children: [
+                          IconButton(
+                            onPressed: (){},
+                            icon: Icon(Icons.edit),
+                          )
+                        ],
+                      ),
+                    ),
                   ),
                 );
 
