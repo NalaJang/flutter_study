@@ -69,7 +69,7 @@ class _FireStorePageState extends State<FireStorePage> {
                       final String name = nameController.text;
                       final String price = priceController.text;
                       
-                      product
+                      await product
                           // 정확한 row 를 지정해주고
                           .doc(documentSnapshot.id)
                           // 필드를 지정해준다.(변한 값은 최종적으로 update()에 전달된다.
