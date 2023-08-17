@@ -159,6 +159,9 @@ class _FireStorePageState extends State<FireStorePage> {
     );
   }
 
+  Future<void> _delete(String productId) async {
+    await product.doc(productId).delete();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -191,11 +194,20 @@ class _FireStorePageState extends State<FireStorePage> {
                       width: 100,
                       child: Row(
                         children: [
+                          // 아이템 수정
                           IconButton(
                             onPressed: (){
                               _update(documentSnapshot);
                             },
                             icon: Icon(Icons.edit),
+                          ),
+
+                          // 아이템 삭제
+                          IconButton(
+                            onPressed: (){
+                              _delete(documentSnapshot.id);
+                            },
+                            icon: Icon(Icons.delete),
                           )
                         ],
                       ),
