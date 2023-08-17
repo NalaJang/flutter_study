@@ -91,6 +91,75 @@ class _FireStorePageState extends State<FireStorePage> {
     );
   }
 
+  Future<void> _create() async {
+
+    await showModalBottomSheet(
+      // isScrollControlled: 기본 높이 조절
+        isScrollControlled: true,
+        context: context,
+        builder: (BuildContext context){
+          return SizedBox(
+            child: Padding(
+              padding: EdgeInsets.only(
+                  top: 20,
+                  left: 20,
+                  right: 20,
+                  // MediaQuery : 키보드에 반응하는 위젯을 만들기 위함
+                  // viewInsets.bottom : 키보드가 올라왔을 때 키보드 위에 창이 위치한다.
+                  bottom: MediaQuery.of(context).viewInsets.bottom
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+
+                  TextField(
+                    // 새 데이터 값이 담긴다
+                    controller: nameController,
+                    decoration: InputDecoration(
+                        labelText: 'Name'
+                    ),
+                  ),
+
+                  TextField(
+                    // 새 데이터 값이 담긴다
+                    controller: priceController,
+                    keyboardType: TextInputType.numberWithOptions(decimal: true),
+                    decoration: InputDecoration(
+                        labelText: 'Price'
+                    ),
+                  ),
+
+                  SizedBox(height: 20,),
+
+                  ElevatedButton(
+                      onPressed: () async {
+
+                        // 새 데이터 값이 두 변수에 담긴다.
+                        final String name = nameController.text;
+                        final String price = priceController.text;
+
+                        await product.add(
+                            {'name':name, 'price':price}
+                        );
+
+                        nameController.text = "";
+                        priceController.text = "";
+
+                        // 업데이트 작업이 끝난 후 showModalBottomSheet 사라지도록.
+                        Navigator.of(context).pop();
+                      },
+                      child: Text('Update')
+                  )
+                ],
+              ),
+            ),
+          );
+        }
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -139,6 +208,17 @@ class _FireStorePageState extends State<FireStorePage> {
           }
           return Center(child: CircularProgressIndicator());
         },
+      ),
+
+      // 새 아이템 추가
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue,
+        onPressed: (){
+
+          _create();
+
+        },
+        child: Icon(Icons.add),
       ),
     );
   }
