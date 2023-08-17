@@ -163,6 +163,12 @@ class _FireStorePageState extends State<FireStorePage> {
     await product.doc(productId).delete();
 
     Navigator.of(context).pop();
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+          content: Text('아이템이 삭제되었습니다.')
+      )
+    );
   }
 
   @override
