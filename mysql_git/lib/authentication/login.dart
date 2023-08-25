@@ -10,6 +10,7 @@ import 'package:mysql_git/user/user_pref.dart';
 
 import '../api/api.dart';
 import '../model/user.dart';
+import '../user/pages/main_screen.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -28,7 +29,6 @@ class _LoginPageState extends State<LoginPage> {
     try {
       var res = await http.post(
           Uri.parse(API.login),
-          // 사용자가 입력한 데이터를 User 클래스에 전달하고 Json 포맷으로 바꾸어 준다.
           body: {
             'user_email' : emailController.text.trim(),
             'user_password' : passwordController.text.trim()
@@ -48,10 +48,11 @@ class _LoginPageState extends State<LoginPage> {
           // 로그인 된 유저 정보 전달
           await RememberUser.saveRememberUserInfo(userInfo);
 
+          Get.to(MainScreen());
+
           setState(() {
             emailController.clear();
             passwordController.clear();
-
           });
         } else {
           Fluttertoast.showToast(msg: 'Please check your email or password');
@@ -152,7 +153,9 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 GestureDetector(
                   onTap: (){
-
+                    if( formKey.currentState!.validate() ) {
+                      userLogin();
+                    }
                   },
                   child: Container(
                     child: Padding(
