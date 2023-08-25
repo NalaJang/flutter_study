@@ -192,7 +192,9 @@ class _SignupPageState extends State<SignupPage> {
                 ),
                 GestureDetector(
                   onTap: () {
-
+                    if( formKey.currentState!.validate() ) {
+                      checkUserEmail();
+                    }
                   },
                   child: Container(
                     child: Padding(
