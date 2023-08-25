@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mysql_git/authentication/signup.dart';
 import 'package:http/http.dart' as http;
+import 'package:mysql_git/user/user_pref.dart';
 
 import '../api/api.dart';
 import '../model/user.dart';
@@ -42,7 +43,10 @@ class _LoginPageState extends State<LoginPage> {
           Fluttertoast.showToast(msg: 'Login successfully');
 
           // 로그인에 성공한 이 특정 유저의 데이터를 기억하기 위함
-          User.fromJson(resLogin['userData']);
+          User userInfo = User.fromJson(resLogin['userData']);
+
+          // 로그인 된 유저 정보 전달
+          await RememberUser.saveRememberUserInfo(userInfo);
 
           setState(() {
             emailController.clear();
