@@ -1,6 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:fluttertoast/fluttertoast.dart';
+
+import '../api/api.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key}) : super(key: key);
@@ -16,6 +22,30 @@ class _SignupPageState extends State<SignupPage> {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
 
+  checkUserEmail() async {
+    try {
+      // 중북 이메일 확인
+      var response = await http.post(
+        Uri.parse(API.validateEmail),
+        body: {
+            'user_email' : emailController.text.trim()
+        }
+      );
+
+      // 서버와의 통신 성공
+      if( response.statusCode == 200 ) {
+        var responseBody = jsonDecode(response.body);
+
+        // 이미 사용 중인 이메일
+        if( responseBody['existEmail'] == true ) {
+          Fluttertoast.showToast(msg: "Email is already in use. Please try another email");
+        }
+      }
+
+    } catch(e) {
+
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
