@@ -73,6 +73,14 @@ class _SignupPageState extends State<SignupPage> {
         
         if( resSignup['success'] == true ) {
           Fluttertoast.showToast(msg: 'Signup successfully');
+
+          // 가입 완료 후 텍스트 필드가 비워지도록
+          setState(() {
+            userNameController.clear();
+            emailController.clear();
+            passwordController.clear();
+
+          });
         } else {
           Fluttertoast.showToast(msg: 'Error occurred. Please try again.');
         }
