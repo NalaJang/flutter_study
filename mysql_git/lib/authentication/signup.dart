@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../api/api.dart';
+import '../model/user.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key}) : super(key: key);
@@ -39,16 +40,47 @@ class _SignupPageState extends State<SignupPage> {
         // 이미 사용 중인 이메일
         if( responseBody['existEmail'] == true ) {
           Fluttertoast.showToast(msg: "Email is already in use. Please try another email");
+
+        } else {
+          saveInfo();
         }
       }
 
     } catch(e) {
-
+      print(e.toString());
+      Fluttertoast.showToast(msg: e.toString());
     }
   }
 
   saveInfo() async{
+    User userModel = User(
+      1,
+      userNameController.text.trim(),
+      emailController.text.trim(),
+      passwordController.text.trim()
+    );
 
+    try {
+      var res = await http.post(
+        Uri.parse(API.signup),
+        // 사용자가 입력한 데이터를 User 클래스에 전달하고 Json 포맷으로 바꾸어 준다.
+        body: userModel.toJson()
+        // -> mysql 에서 이 데이터들을 저장할 수 있다.
+      );
+
+      if( res.statusCode == 200 ) {
+        var resSignup = jsonDecode(res.body);
+        
+        if( resSignup['success'] == true ) {
+          Fluttertoast.showToast(msg: 'Signup successfully');
+        } else {
+          Fluttertoast.showToast(msg: 'Error occurred. Please try again.');
+        }
+      }
+    } catch(e) {
+      print(e.toString());
+      Fluttertoast.showToast(msg: e.toString());
+    }
   }
 
   @override
