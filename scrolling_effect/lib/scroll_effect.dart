@@ -22,7 +22,11 @@ class ScrollEffect extends StatelessWidget {
 
             // appBar 배경 이미지 추가
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset('assets/fruit.png'),
+              background: Image.asset(
+                'assets/fruit.png',
+                // 이미지 꽉 채우기
+                fit: BoxFit.cover,
+              ),
             ),
           )
         ],
