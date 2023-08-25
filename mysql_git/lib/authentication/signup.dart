@@ -46,6 +46,11 @@ class _SignupPageState extends State<SignupPage> {
 
     }
   }
+
+  saveInfo() async{
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
