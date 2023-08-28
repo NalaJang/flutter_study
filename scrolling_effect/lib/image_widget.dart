@@ -13,7 +13,7 @@ class ImageWidget extends StatelessWidget {
       child: Card(
         // 앱에서 랜덤으로 이미지를 불러올 수 있는 주소
         child: Image.network(
-          'https://source.unplash.com/random?sig=$index',
+          'https://source.unsplash.com/random?sig=$index',
           fit: BoxFit.cover,
         ),
       ),
