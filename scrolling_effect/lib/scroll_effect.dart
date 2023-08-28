@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'image_widget.dart';
+
 class ScrollEffect extends StatelessWidget {
   const ScrollEffect({Key? key}) : super(key: key);
 
@@ -27,6 +29,22 @@ class ScrollEffect extends StatelessWidget {
                 // 이미지 꽉 채우기
                 fit: BoxFit.cover,
               ),
+            ),
+          ),
+
+          SliverToBoxAdapter(
+            child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2
+                ),
+                itemCount: 20,
+                // GridView.builder 위젯을 스크롤시키기 위해서
+                // primary: false, shrinkWrap: true 를 준다.
+                primary: false,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return ImageWidget(index: index,);
+                }
             ),
           )
         ],
