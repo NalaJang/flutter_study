@@ -32,6 +32,9 @@ class ScrollEffect extends StatelessWidget {
             ),
           ),
 
+          // slivers 배열에는 sliver 관련 위젯들만 올 수 있다.
+          // 그런데 콘텐츠를 배치하고 화면을 구성할 때에는 일반 위젯이 필요하므로
+          // 이 때에는 SliverToBoxAdapter widget 을 사용하면 된다.
           SliverToBoxAdapter(
             child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
