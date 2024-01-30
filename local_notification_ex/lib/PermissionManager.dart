@@ -3,6 +3,14 @@ import 'package:permission_handler/permission_handler.dart';
 
 class PermissionManager {
 
+  // 싱글톤
+  static final PermissionManager _instance = PermissionManager._();
+  factory PermissionManager() {
+    return _instance;
+  }
+  PermissionManager._();
+
+
   void checkNotificationPermission(BuildContext context) async {
     final status = await requestNotificationPermission();
 
