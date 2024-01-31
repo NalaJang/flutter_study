@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:local_notification_ex/PermissionManager.dart';
 
-void main() {
+void main() async {
+  // main()에서 플러그인을 초기화하려는 경우 해당 바인딩을 사용해 Flutter 엔진에 바인딩해준다.
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // 플러그인 초기화
+  await PermissionManager.initialization();
+
   runApp(const MyApp());
 }
 
