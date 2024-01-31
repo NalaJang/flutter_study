@@ -11,6 +11,11 @@ class PermissionManager {
   }
   PermissionManager._();
 
+
+  static const String channelId = 'channel id';
+  static const String channelName = 'channel name';
+
+
   // local notification 플러그인 인스턴스 생성
   static FlutterLocalNotificationsPlugin localNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
@@ -71,6 +76,17 @@ class PermissionManager {
         );
       }
     }
+  }
+
+  // ios 에서 알림 권한 요청
+  Future<void> requestIOSPermissions() async {
+    final result = await localNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+        IOSFlutterLocalNotificationsPlugin>()?.requestPermissions(
+      alert: true,
+      badge: true,
+      sound: true
+    );
   }
 
   Future<PermissionStatus> requestNotificationPermission() async {
