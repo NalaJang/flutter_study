@@ -19,6 +19,7 @@ class PermissionManager {
   // local notification 플러그인 인스턴스 생성
   static FlutterLocalNotificationsPlugin localNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
+  // 플러그인 초기화
   static initialization() async {
     // 알림을 표시할 때 사용할 아이콘
     const AndroidInitializationSettings androidInitializationSettings =
@@ -28,14 +29,15 @@ class PermissionManager {
     DarwinInitializationSettings(
       // 내가 원할 때 권한 요청을 하기 위해 false 값을 부여.
       // true 일 경우, 앱이 실행되고 바로 권한 요청을 한다.
-        requestAlertPermission: false,
-        requestBadgePermission: false,
-        requestSoundPermission: false
+      requestAlertPermission: false,
+      requestBadgePermission: false,
+      requestSoundPermission: false
     );
 
     const InitializationSettings initializationSettings = InitializationSettings(
-        android: androidInitializationSettings,
-        iOS: iosInitializationSettings);
+      android: androidInitializationSettings,
+      iOS: iosInitializationSettings
+    );
 
     // 알림 초기화
     await localNotificationsPlugin.initialize(initializationSettings);
