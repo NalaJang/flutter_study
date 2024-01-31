@@ -11,7 +11,7 @@ class PermissionManager {
   }
   PermissionManager._();
 
-
+  int id = 0;
   static const String channelId = 'channel id';
   static const String channelName = 'channel name';
 
@@ -86,6 +86,28 @@ class PermissionManager {
       alert: true,
       badge: true,
       sound: true
+    );
+  }
+
+  // 알림 표시
+  Future<void> showNotification() async {
+    // android 채널 세부 정보
+    const AndroidNotificationDetails androidNotificationDetails =
+        AndroidNotificationDetails(
+          channelId, channelName,
+          channelDescription: 'channel description',
+          importance: Importance.max,
+          priority: Priority.max,
+        );
+
+    const NotificationDetails notificationDetails =
+        NotificationDetails(
+          android: androidNotificationDetails,
+          iOS: DarwinNotificationDetails(badgeNumber: 1)
+        );
+
+    await localNotificationsPlugin.show(
+      id++, 'plain title', 'plain body', notificationDetails, payload: 'item x'
     );
   }
 
