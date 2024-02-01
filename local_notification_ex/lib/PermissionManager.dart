@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -44,42 +43,6 @@ class PermissionManager {
     await localNotificationsPlugin.initialize(initializationSettings);
 }
 
-
-
-  void checkNotificationPermission(BuildContext context) async {
-    final status = await requestNotificationPermission();
-
-    if( status.isDenied || status.isPermanentlyDenied ) {
-      if( context.mounted ) {
-
-        showDialog(
-          context: context,
-          builder: (BuildContext context) => AlertDialog(
-            title: const Text('알람 권한'),
-            content: const Text('알람이 꺼져 있습니다.'),
-            actions: [
-              // 닫기
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text('닫기')
-              ),
-
-              // 알람 설정 화면으로 가기
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  openAppSettings();
-                },
-                child: const Text('알람 켜기')
-              ),
-            ],
-          )
-        );
-      }
-    }
-  }
 
   // 알림 권한 요청
   Future<void> requestPermissions() async {
