@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:local_notification_ex/PermissionManager.dart';
 
@@ -31,19 +33,47 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  int _count = 0;
+  Timer? timer;
 
   @override
   void initState() {
     super.initState();
 
-    // 알람 권한 확인
-    // PermissionManager().checkNotificationPermission(context);
+    // 알람 권한 요청
     PermissionManager().requestPermissions();
   }
 
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Center(
+        child: ElevatedButton(
+          onPressed: (){
+            // 알림 타이머 시작
+            _startTimer();
+          },
+          child: const Text('Local Notification')
+        )
+      ),
+    );
+  }
+
+  void _startTimer() {
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        _count++;
+
+        if( _count == 3 ) {
+          PermissionManager().showNotification();
+          _stopTimer();
+        }
+      });
+    });
+  }
+
+  void _stopTimer() {
+    timer?.cancel();
   }
 }
