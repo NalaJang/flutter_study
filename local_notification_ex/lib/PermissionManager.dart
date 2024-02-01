@@ -13,7 +13,6 @@ class PermissionManager {
   }
   PermissionManager._();
 
-  int id = 0;
   static const String channelId = 'channel id';
   static const String channelName = 'channel name';
 
@@ -103,6 +102,7 @@ class PermissionManager {
 
   // 알림 표시
   Future<void> showNotification() async {
+    print('showNotification');
     // android 채널 세부 정보
     const AndroidNotificationDetails androidNotificationDetails =
         AndroidNotificationDetails(
@@ -119,7 +119,7 @@ class PermissionManager {
         );
 
     await localNotificationsPlugin.show(
-      id++, 'plain title', 'plain body', notificationDetails, payload: 'item x'
+      0, 'plain title', 'plain body', notificationDetails, payload: 'item x'
     );
   }
 

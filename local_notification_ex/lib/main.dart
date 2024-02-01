@@ -75,5 +75,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _stopTimer() {
     timer?.cancel();
+    _count = 0;
   }
 }
