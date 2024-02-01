@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -80,15 +82,23 @@ class PermissionManager {
     }
   }
 
-  // ios 에서 알림 권한 요청
-  Future<void> requestIOSPermissions() async {
-    final result = await localNotificationsPlugin
-        .resolvePlatformSpecificImplementation<
-        IOSFlutterLocalNotificationsPlugin>()?.requestPermissions(
-      alert: true,
-      badge: true,
-      sound: true
-    );
+  // 알림 권한 요청
+  Future<void> requestPermissions() async {
+    if( Platform.isAndroid ) {
+      final AndroidFlutterLocalNotificationsPlugin? androidImplementation =
+          localNotificationsPlugin
+              .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
+
+          await androidImplementation?.requestNotificationsPermission();
+
+    } else if( Platform.isIOS ) {
+      await localNotificationsPlugin.resolvePlatformSpecificImplementation<
+          IOSFlutterLocalNotificationsPlugin>()?.requestPermissions(
+          alert: true,
+          badge: true,
+          sound: true
+      );
+    }
   }
 
   // 알림 표시

@@ -37,7 +37,8 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
 
     // 알람 권한 확인
-    PermissionManager().checkNotificationPermission(context);
+    // PermissionManager().checkNotificationPermission(context);
+    PermissionManager().requestPermissions();
   }
 
 
