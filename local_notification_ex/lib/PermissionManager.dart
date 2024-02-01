@@ -55,15 +55,15 @@ class PermissionManager {
         showDialog(
           context: context,
           builder: (BuildContext context) => AlertDialog(
-            title: Text('알람 권한'),
-            content: Text('알람이 꺼져 있습니다.'),
+            title: const Text('알람 권한'),
+            content: const Text('알람이 꺼져 있습니다.'),
             actions: [
               // 닫기
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('닫기')
+                child: const Text('닫기')
               ),
 
               // 알람 설정 화면으로 가기
@@ -72,7 +72,7 @@ class PermissionManager {
                   Navigator.of(context).pop();
                   openAppSettings();
                 },
-                child: Text('알람 켜기')
+                child: const Text('알람 켜기')
               ),
             ],
           )
@@ -102,7 +102,6 @@ class PermissionManager {
 
   // 알림 표시
   Future<void> showNotification() async {
-    print('showNotification');
     // android 채널 세부 정보
     const AndroidNotificationDetails androidNotificationDetails =
         AndroidNotificationDetails(
