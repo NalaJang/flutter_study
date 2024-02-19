@@ -1,5 +1,13 @@
 {
+  "helloWorld" : "Hello World",
+
   "hello" : "안녕하세요 {name}",
+  "@hello" : {
+    "name" : {
+      "description" : "userName",
+      "example" : "John"
+    }
+  },
 
   "haveANiceDay" : "좋은 하루 보내세요."
 }

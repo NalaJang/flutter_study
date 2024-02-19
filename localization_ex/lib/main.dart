@@ -21,6 +21,12 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate
       ],
+
+      // 지원하는 언어
+      supportedLocales: [
+        Locale('en', ''),
+        Locale('ko', '')
+      ],
       home: MyHomePage(),
     );
   }
