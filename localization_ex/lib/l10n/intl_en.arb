@@ -1,0 +1,14 @@
+{
+  "test": "test ^^",
+
+  "test2" : "Hiiii. I'm {name}",
+  "@test2" : {
+    "description": "Greeting message",
+    "placeholders": {
+      "name": {
+        "description": "User's name",
+        "example": "John"
+      }
+    }
+  }
+}
