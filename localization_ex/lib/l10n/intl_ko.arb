@@ -1,4 +1,14 @@
 {
-  "test" : "테스트입니다!!!!!",
-  "test2" : "두번째 테스트"
+  "test": "테스트 ^^",
+
+  "test2" : "안녕!! 나는 {name}(이)야",
+  "@test2" : {
+    "description": "Greeting message",
+    "placeholders": {
+      "name": {
+        "description": "User's name",
+        "example": "John"
+      }
+    }
+  }
 }

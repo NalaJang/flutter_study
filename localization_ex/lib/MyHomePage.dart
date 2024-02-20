@@ -6,16 +6,34 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    String hello(String yourName) => Intl.message(
+      'Hello, $yourName',
+      name: 'test2',
+      args: [yourName],
+      desc: 'Say hello',
+      examples: const {'yourName': 'James'},
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          Intl.message('test')
+            Intl.message('test')
         ),
       ),
 
       body: Center(
-        child: Text(
-          Intl.message('test2')
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(hello('James')),
+
+            const SizedBox(height: 30,),
+
+            Text(
+                Intl.message('test2', args: ['코린이'])
+            ),
+          ],
         ),
       ),
     );
