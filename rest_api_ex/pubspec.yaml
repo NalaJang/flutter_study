@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   # sdk: '>=2.19.6 <3.0.0' 사이에서 사용하는 http 버전
   http: ^0.13.6
+  provider: ^6.1.1
 
 dev_dependencies:
   flutter_test:
