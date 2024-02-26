@@ -21,7 +21,7 @@ class HttpModel {
         width = json["width"],
         height = json["height"],
         url = json["url"],
-        downloadUrl = json["downloadUrl"];
+        downloadUrl = json["download_url"];
 
   // 또는 아래 코드로 작성 가능.
   // factory HttpModel.fromJson(Map<String, dynamic> json) {
@@ -31,7 +31,7 @@ class HttpModel {
   //       width : json["width"],
   //       height : json["height"],
   //       url : json["url"],
-  //       downloadUrl : json["downloadUrl"],
+  //       downloadUrl : json["download_url"],
   //   );
   // }
 }
