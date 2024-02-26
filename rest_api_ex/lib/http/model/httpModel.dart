@@ -14,4 +14,24 @@ class HttpModel {
     required this.url,
     required this.downloadUrl,
   });
+
+  HttpModel.fromJson(Map<String, dynamic> json)
+      : id = json["id"],
+        author = json["author"],
+        width = json["width"],
+        height = json["height"],
+        url = json["url"],
+        downloadUrl = json["downloadUrl"];
+
+  // 또는 아래 코드로 작성 가능.
+  // factory HttpModel.fromJson(Map<String, dynamic> json) {
+  //   return HttpModel(
+  //       id : json["id"],
+  //       author : json["author"],
+  //       width : json["width"],
+  //       height : json["height"],
+  //       url : json["url"],
+  //       downloadUrl : json["downloadUrl"],
+  //   );
+  // }
 }
