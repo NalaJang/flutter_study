@@ -16,14 +16,21 @@ class HttpEx extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(title: const Text('Http ex'),),
 
-            body: ListView.builder(
-              itemCount: state.modelList.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                  child: Text(state.modelList[index].id),
-                );
-              }
+            body: NotificationListener<ScrollNotification>(
+              onNotification: (ScrollNotification notification) {
+                state.scrollListener(notification);
+                return false;
+              },
+              child: ListView.builder(
+                itemCount: state.modelList.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+
+                    ],
+                  );
+                }
+              ),
             ),
           );
         },
