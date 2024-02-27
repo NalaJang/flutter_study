@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rest_api_ex/dio/dio_ex_screen.dart';
 
 import 'http/httpEx.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HttpEx(),
+      home: DioExScreen(),
     );
   }
 }
