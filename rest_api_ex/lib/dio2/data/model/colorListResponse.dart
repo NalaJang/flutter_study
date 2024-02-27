@@ -1,5 +1,6 @@
-import 'package:rest_api_ex/dio2/model/colorModel.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import 'colorModel.dart';
 part 'colorListResponse.g.dart';
 
 @JsonSerializable()
