@@ -33,6 +33,7 @@ class HttpProvider with ChangeNotifier {
 
       // API 호출 성공
       if( _response.statusCode == 200 ) {
+        // http 는 데이터를 json 형태로 변환해야 한다.
         List<dynamic> data = json.decode(_response.body);
         List<HttpModel> result = data.map((e) => HttpModel.fromJson(e)).toList();
 

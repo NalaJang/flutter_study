@@ -25,6 +25,7 @@ class DioProvider extends ChangeNotifier {
       final response = await _dio.get("https://picsum.photos/v2/list?page=$pageNo&limit=10");
 
       if( response.statusCode == 200 ) {
+        // dio 는 데이터를 json 으로 변형된 형태로 리턴해준다.
         List<dynamic> fromData = response.data as List<dynamic>;
         List<DioModel> data = fromData.map((e) => DioModel.fromJson(e)).toList();
 
