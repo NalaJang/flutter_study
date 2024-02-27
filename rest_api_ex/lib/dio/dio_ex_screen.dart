@@ -18,12 +18,12 @@ class DioExScreen extends StatelessWidget {
             appBar: AppBar(title: const Text('Dio ex'),),
 
             body:
-            // NotificationListener<ScrollNotification>(
-            //   onNotification: (ScrollNotification notification) {
-            //     state.scrollListener(notification);
-            //     return false;
-            //   },
-            //   child:
+            NotificationListener<ScrollNotification>(
+              onNotification: (ScrollNotification notification) {
+                state.scrollListener(notification);
+                return false;
+              },
+              child:
               ListView.builder(
                 itemCount: state.modelList.length,
                 itemBuilder: (context, index) {
@@ -79,7 +79,7 @@ class DioExScreen extends StatelessWidget {
                   );
                 }
               ),
-            // ),
+            ),
           );
         },
       ),

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 
 import '../model/dioModel.dart';
@@ -35,6 +36,28 @@ class DioProvider extends ChangeNotifier {
     } catch(error) {
       print('error > $error');
       return [];
+    }
+  }
+
+  void scrollListener(ScrollNotification notification) {
+    if( notification.metrics.maxScrollExtent * 0.85 < notification.metrics.pixels ) {
+      _morePhotos();
+    }
+  }
+
+  Future<void> _morePhotos() async {
+    if( !isAddPage ) {
+      isAddPage = true;
+      notifyListeners();
+
+      List<DioModel> data = await _fetchPost(pageNo: currentPage);
+
+      Future.delayed(const Duration(microseconds: 1000), () {
+        modelList.addAll(data);
+        currentPage++;
+        isAddPage = false;
+        notifyListeners();
+      });
     }
   }
 }
