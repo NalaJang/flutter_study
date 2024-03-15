@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rest_api_ex/dio/dio_ex_screen.dart';
 
+import 'dio2/ui/dio_result_page.dart';
 import 'http/httpEx.dart';
 
 void main() {
@@ -12,9 +13,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: DioExScreen(),
+      home: DioResultPage(),
     );
   }
 }

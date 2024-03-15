@@ -2,9 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class CustomLogInterceptor extends Interceptor {
-  final FlutterSecureStorage storage;
+  final storage = FlutterSecureStorage();
 
-  CustomLogInterceptor({required this.storage});
+  // CustomLogInterceptor({required this.storage});
 
   // 요청 전처리(헤더 추가, 토큰 갱신 등)
   @override

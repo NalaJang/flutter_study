@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/modal_progress_hud_nsn-Swift.h</key>
 		<data>
-		MK/t0QgDPW2mPladNhsftjXDsXQ=
+		YWeOQ/grKjCnUEZLdqqcTgta304=
 		</data>
 		<key>Headers/modal_progress_hud_nsn-umbrella.h</key>
 		<data>
@@ -18,15 +18,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		gGBFz/UgLdDOKudJZWa4VvMuxxg=
+		cqmX5LjScS4/iyzZqG9PM5SHOQo=
 		</data>
 		<key>Modules/modal_progress_hud_nsn.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		5NNjpfOYwH5/vnOHYRnEyf7XlGk=
+		autLYyOs0FmGGfPLUVMFy4Q66JM=
 		</data>
 		<key>Modules/modal_progress_hud_nsn.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		QOup7lIxTPLzW7/ftG7/3wnN94s=
+		bBNco5NGbq2v/dB9W9WqfL/zFgY=
 		</data>
 		<key>Modules/modal_progress_hud_nsn.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/modal_progress_hud_nsn.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		ac4dSdgJGsbbQpvrWH/enwwBp1c=
+		XV6H61SGvsTfk9uZn9MDjmfDFM0=
 		</data>
 		<key>Modules/modal_progress_hud_nsn.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		LOW4x+pOdqMa5aFnRz1gdU0tTF0=
+		Zcrj/8C0+0l1S9e6mrAlPUGNo3I=
 		</data>
 		<key>Modules/modal_progress_hud_nsn.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -46,11 +46,11 @@
 		</data>
 		<key>Modules/modal_progress_hud_nsn.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		WJeh/iPT4mr88CHmz4hNUO78P9w=
+		Jf2MRP0oixI2g+Cw6jI+nBJteDg=
 		</data>
 		<key>Modules/modal_progress_hud_nsn.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		m+E2pbTDP98L/rriurzo+OIg+aY=
+		G15lw6ylhUau01ce9Gj2pE0mdBo=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -70,7 +70,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EjPUYaFqpWwkGwUeXXf7iESkzkKTeDJCaghy/s4+kn4=
+			iQw9Mlm9A92xpCASE3BHoF0DTpnWQ9vo07FotYk1LBU=
 			</data>
 		</dict>
 		<key>Headers/modal_progress_hud_nsn-umbrella.h</key>
@@ -84,14 +84,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EFXndSX9ST6YvZ21AOi2G9uXpDrTIDGdJ1hUoLQPGDM=
+			kL+9rxLNfmugCATEuCZYsRED2md2FC6UT13wJf6haIc=
 			</data>
 		</dict>
 		<key>Modules/modal_progress_hud_nsn.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			NFTGTnFyYqgeRJ+G9ID0TRe83Brj85DfCSQe7ibCvZQ=
+			Kpn1QPzAfZAmQbMsDosE9uMLusCoLG+6jE5XHHkO5pQ=
 			</data>
 		</dict>
 		<key>Modules/modal_progress_hud_nsn.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -105,14 +105,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			da/YfrnNWfCzTptuExp0m+IjcauzhXF+S6kdE24cwlw=
+			phifQG4p7qwb+shdG7xIoTKcqfYzLIFWzgTfp+xLXqE=
 			</data>
 		</dict>
 		<key>Modules/modal_progress_hud_nsn.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			HKF0pH3PTi3Mc4NXsBVLAXBB3iTTlql4WXshS+q0EUY=
+			GCqfZ9QwB6hM4RPP6OnjEp7LGqc6/j1cwyDtArSFeM4=
 			</data>
 		</dict>
 		<key>Modules/modal_progress_hud_nsn.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -126,14 +126,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			i9R0UoY7rewXeP/Jf2liZmZ1CMKUtdU+FpIzNdl7OYw=
+			tnXH76++o7nROO2wLsDfy1HhzIClM1fNoEto6kPFUAw=
 			</data>
 		</dict>
 		<key>Modules/modal_progress_hud_nsn.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			l7B8lIH9TDfsFypToRG9U9inWJbcCrMTPgnYCH88Df4=
+			RK7E86D8AnfYQ7aF3iqiSfweo7BhDmLhkByJ1mBaVrw=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
