@@ -36,6 +36,16 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
+  # 내가 추가
+  # sdk: '>=2.19.6 <3.0.0' 사이에서 사용하는 http 버전
+  http: ^0.13.6
+  provider: ^6.1.1
+  dio: ^5.4.1
+  json_annotation: ^4.8.1
+  build_runner: ^2.3.3
+  retrofit: ^4.1.0
+  flutter_secure_storage: ^8.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -46,6 +56,10 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+
+  # 내가 추가
+  retrofit_generator: '>=7.0.0 <8.0.0'
+  json_serializable: ^6.6.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
