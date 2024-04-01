@@ -48,21 +48,4 @@ class DefaultFirebaseOptions {
         );
     }
   }
-
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCLf9HIPQ8dhhJWaj2DocMXvqlg9VwyKb4',
-    appId: '1:378864859026:android:644bad46c495413b73b34b',
-    messagingSenderId: '378864859026',
-    projectId: 'oasis-cafe-app',
-    storageBucket: 'oasis-cafe-app.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB8cf3PSiL0SHx1kWAKKg8YGC_LGCtkxkc',
-    appId: '1:378864859026:ios:96e7c6404167854973b34b',
-    messagingSenderId: '378864859026',
-    projectId: 'oasis-cafe-app',
-    storageBucket: 'oasis-cafe-app.appspot.com',
-    iosBundleId: 'com.example.valueListenableBuilderEx',
-  );
 }
